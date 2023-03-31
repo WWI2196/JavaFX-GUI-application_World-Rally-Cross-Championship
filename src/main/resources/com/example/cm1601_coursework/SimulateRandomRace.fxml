@@ -10,48 +10,54 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750" prefWidth="900" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cm1601_coursework.SimulateRandomRaceController">
-    <children>
-        <Button fx:id="backToMenuButton" layoutX="355.0" layoutY="686.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back to Main Menu">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="18.0" />
-            </font></Button>
-        <Label layoutX="241.0" layoutY="31.0" text="World Rally Championship Simulator">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="24.0" />
-            </font>
-        </Label>
-        <Label layoutX="247.0" layoutY="90.0" text="Location of the race :">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Label>
-        <Label layoutX="247.0" layoutY="127.0" text="Date of the race :">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Label>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="28.0" layoutX="383.0" layoutY="87.0" stroke="BLACK" strokeType="INSIDE" width="288.0" />
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="28.0" layoutX="358.0" layoutY="125.0" stroke="BLACK" strokeType="INSIDE" width="218.0" />
-        <Text fx:id="raceLocationLabel" layoutX="387.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                                          " wrappingWidth="280.13671875">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Text>
-        <Text fx:id="raceDateLabel" layoutX="361.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="               " wrappingWidth="211.13671875">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Text>
-        <TableView fx:id="simulationStandingTable" layoutX="192.0" layoutY="215.0" prefHeight="441.0" prefWidth="536.0">
-            <columns>
-                <TableColumn fx:id="simulationPosition" prefWidth="68.0" text="Position" />
-                <TableColumn fx:id="simulationDriver" prefWidth="150.0" text="Driver" />
-                <TableColumn fx:id="simulationTeam" prefWidth="127.0" text="Team" />
-                <TableColumn fx:id="simulationCar" prefWidth="124.0" text="Car" />
-                <TableColumn fx:id="simulationPoints" prefWidth="66.0" text="Points" />
-            </columns>
-        </TableView>
-        <ProgressBar fx:id="progressBar" layoutX="302.0" layoutY="177.0" prefHeight="25.0" prefWidth="317.0" progress="0.0" />
-    </children>
+<AnchorPane prefHeight="750" prefWidth="900" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.cm1601_coursework.SimulateRandomRaceController">
+    <Button fx:id="backToMenuButton" layoutX="355.0" layoutY="686.0" mnemonicParsing="false" onAction="#switchToMenu"
+            text="Back to Main Menu">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="18.0"/>
+        </font>
+    </Button>
+    <Label layoutX="241.0" layoutY="31.0" text="World Rally Championship Simulator">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="24.0"/>
+        </font>
+    </Label>
+    <Label layoutX="247.0" layoutY="90.0" text="Location of the race :">
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </Label>
+    <Label layoutX="247.0" layoutY="127.0" text="Date of the race :">
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </Label>
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="28.0" layoutX="383.0" layoutY="87.0" stroke="BLACK"
+               strokeType="INSIDE" width="288.0"/>
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="28.0" layoutX="358.0" layoutY="125.0" stroke="BLACK"
+               strokeType="INSIDE" width="218.0"/>
+    <Text fx:id="raceLocationLabel" layoutX="387.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0"
+          text="                                          " wrappingWidth="280.13671875">
+        <font>
+            <Font size="15.0"/>
+        </font>
+    </Text>
+    <Text fx:id="raceDateLabel" layoutX="361.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0"
+          text="               " wrappingWidth="211.13671875">
+        <font>
+            <Font size="15.0"/>
+        </font>
+    </Text>
+    <TableView fx:id="simulationStandingTable" layoutX="192.0" layoutY="215.0" prefHeight="441.0" prefWidth="536.0">
+        <columns>
+            <TableColumn fx:id="simulationPosition" prefWidth="68.0" text="Position"/>
+            <TableColumn fx:id="simulationDriver" prefWidth="150.0" text="Driver"/>
+            <TableColumn fx:id="simulationTeam" prefWidth="127.0" text="Team"/>
+            <TableColumn fx:id="simulationCar" prefWidth="124.0" text="Car"/>
+            <TableColumn fx:id="simulationPoints" prefWidth="66.0" text="Points"/>
+        </columns>
+    </TableView>
+    <ProgressBar fx:id="progressBar" layoutX="302.0" layoutY="177.0" prefHeight="25.0" prefWidth="317.0"
+                 progress="0.0"/>
 </AnchorPane>

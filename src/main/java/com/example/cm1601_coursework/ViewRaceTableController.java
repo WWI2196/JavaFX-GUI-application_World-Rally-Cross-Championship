@@ -2,19 +2,11 @@ package com.example.cm1601_coursework;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -88,23 +80,6 @@ public class ViewRaceTableController implements Initializable {
     }
 
     public void switchToMenu(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-
-        File file01 = new File("src/image02.jpg");
-        Image image01 = new Image(file01.toURI().toString());
-        ImageView imageView01 = new ImageView(image01);
-        imageView01.setFitHeight(750);
-        imageView01.setFitWidth(400);
-        imageView01.setLayoutX(0);
-        imageView01.setLayoutY(0);
-
-        if (root instanceof Pane) {
-            ((Pane) root).getChildren().add(imageView01);
-        }
-
-        stage.setScene(scene);
-        stage.show();
+        MainController.switchToMenu(event);
     }
 }

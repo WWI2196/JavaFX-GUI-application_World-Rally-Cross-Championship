@@ -9,32 +9,36 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750" prefWidth="900" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cm1601_coursework.ViewRaceTableController">
-    <children>
-        <Text layoutX="606.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Race Table">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="24.0" />
-            </font></Text>
-        <Button layoutX="681.0" layoutY="690.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back to Main Menu">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="18.0" />
-            </font></Button>
-        <TableView fx:id="raceTable" editable="true" fixedCellSize="-4.0" layoutX="444.0" layoutY="156.0" prefHeight="507.0" prefWidth="414.0">
-            <columns>
-                <TableColumn fx:id="circuitColumn" minWidth="0.0" prefWidth="253.0" sortable="false" text="Circuit" />
-                <TableColumn fx:id="dateColumn" prefWidth="159.0" sortable="false" text="Date" />
-            </columns>
-        </TableView>
-        <Label layoutX="444.0" layoutY="106.0" prefHeight="22.0" prefWidth="163.0" text="Race table as for: ">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="18.0" />
-            </font>
-        </Label>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="34.0" layoutX="607.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="163.0" />
-        <Label fx:id="currentDateLabel" layoutX="613.0" layoutY="106.0" prefHeight="17.0" prefWidth="152.0" text="                           " textAlignment="CENTER">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="18.0" />
-            </font>
-        </Label>
-    </children>
+<AnchorPane prefHeight="750" prefWidth="900" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.cm1601_coursework.ViewRaceTableController">
+    <Text layoutX="606.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Race Table">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="24.0"/>
+        </font>
+    </Text>
+    <Button layoutX="681.0" layoutY="690.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back to Main Menu">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="18.0"/>
+        </font>
+    </Button>
+    <TableView fx:id="raceTable" editable="true" fixedCellSize="-4.0" layoutX="444.0" layoutY="156.0" prefHeight="507.0"
+               prefWidth="414.0">
+        <columns>
+            <TableColumn fx:id="circuitColumn" minWidth="0.0" prefWidth="253.0" sortable="false" text="Circuit"/>
+            <TableColumn fx:id="dateColumn" prefWidth="159.0" sortable="false" text="Date"/>
+        </columns>
+    </TableView>
+    <Label layoutX="444.0" layoutY="106.0" prefHeight="22.0" prefWidth="163.0" text="Race table as for: ">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="18.0"/>
+        </font>
+    </Label>
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="34.0" layoutX="607.0" layoutY="100.0" stroke="BLACK"
+               strokeType="INSIDE" width="163.0"/>
+    <Label fx:id="currentDateLabel" layoutX="613.0" layoutY="106.0" prefHeight="17.0" prefWidth="152.0"
+           text="                           " textAlignment="CENTER">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="18.0"/>
+        </font>
+    </Label>
 </AnchorPane>

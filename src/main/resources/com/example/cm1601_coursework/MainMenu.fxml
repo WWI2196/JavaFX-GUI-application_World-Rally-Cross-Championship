@@ -4,44 +4,62 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750" prefWidth="900" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cm1601_coursework.MainController">
-    <children>
-        <Button fx:id="driverDetailsButton" layoutX="518.0" layoutY="76.0" mnemonicParsing="false" onAction="#switchToAddDriverDetails" prefWidth="230.0" text="Add Driver Details">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="18.0" />
-            </font></Button>
-        <Button fx:id="deleteDriverButton" layoutX="518.0" layoutY="150.0" mnemonicParsing="false" onAction="#switchToDeleteDriverDetails" prefWidth="230.0" text="Delete Driver Details">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="18.0" />
-            </font></Button>
-        <Button fx:id="updateDriverButton" layoutX="518.0" layoutY="225.0" mnemonicParsing="false" onAction="#switchToUpdateDriverDetails" prefWidth="230.0" text="Update Driver Details">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="18.0" />
-            </font></Button>
-        <Button fx:id="standingsButton" layoutX="518.0" layoutY="300.0" mnemonicParsing="false" onAction="#switchToViewStandingTable" prefWidth="230.0" text="View Standings Table">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="18.0" />
-            </font></Button>
-        <Button fx:id="randomRaceButton" layoutX="518.0" layoutY="375.0" mnemonicParsing="false" onAction="#switchToStimulateRandomRace" prefWidth="230.0" text="Simulate Random Race">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="18.0" />
-            </font></Button>
-        <Button fx:id="raceTableButton" layoutX="518.0" layoutY="450.0" mnemonicParsing="false" onAction="#switchToViewRaceTable" prefWidth="230.0" text="View Race Table">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="18.0" />
-            </font></Button>
-        <Button fx:id="saveDataButton" layoutX="518.0" layoutY="525.0" mnemonicParsing="false" onAction="#switchToSaveCurrentData" prefWidth="230.0" text="Save Current Data">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="18.0" />
-            </font></Button>
-        <Button fx:id="loadDataButton" layoutX="518.0" layoutY="600.0" mnemonicParsing="false" onAction="#switchToLoadSavedData" prefWidth="230.0" text="Load Saved Data">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="18.0" />
-            </font></Button>
-        <Button fx:id="exitButton" layoutX="805.0" layoutY="685.0" mnemonicParsing="false" onAction="#exitProgramme" text="Exit">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="18.0" />
-            </font></Button>
-    </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750"
+            prefWidth="900" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.cm1601_coursework.MainController">
+    <Button fx:id="driverDetailsButton" layoutX="518.0" layoutY="76.0" mnemonicParsing="false"
+            onAction="#switchToAddDriverDetails" prefWidth="230.0" text="Add Driver Details">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="18.0"/>
+        </font>
+    </Button>
+    <Button fx:id="deleteDriverButton" layoutX="518.0" layoutY="150.0" mnemonicParsing="false"
+            onAction="#switchToDeleteDriverDetails" prefWidth="230.0" text="Delete Driver Details">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="18.0"/>
+        </font>
+    </Button>
+    <Button fx:id="updateDriverButton" layoutX="518.0" layoutY="225.0" mnemonicParsing="false"
+            onAction="#switchToUpdateDriverDetails" prefWidth="230.0" text="Update Driver Details">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="18.0"/>
+        </font>
+    </Button>
+    <Button fx:id="standingsButton" layoutX="518.0" layoutY="300.0" mnemonicParsing="false"
+            onAction="#switchToViewStandingTable" prefWidth="230.0" text="View Standings Table">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="18.0"/>
+        </font>
+    </Button>
+    <Button fx:id="randomRaceButton" layoutX="518.0" layoutY="375.0" mnemonicParsing="false"
+            onAction="#switchToStimulateRandomRace" prefWidth="230.0" text="Simulate Random Race">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="18.0"/>
+        </font>
+    </Button>
+    <Button fx:id="raceTableButton" layoutX="518.0" layoutY="450.0" mnemonicParsing="false"
+            onAction="#switchToViewRaceTable" prefWidth="230.0" text="View Race Table">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="18.0"/>
+        </font>
+    </Button>
+    <Button fx:id="saveDataButton" layoutX="518.0" layoutY="525.0" mnemonicParsing="false"
+            onAction="#switchToSaveCurrentData" prefWidth="230.0" text="Save Current Data">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="18.0"/>
+        </font>
+    </Button>
+    <Button fx:id="loadDataButton" layoutX="518.0" layoutY="600.0" mnemonicParsing="false"
+            onAction="#switchToLoadSavedData" prefWidth="230.0" text="Load Saved Data">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="18.0"/>
+        </font>
+    </Button>
+    <Button fx:id="exitButton" layoutX="805.0" layoutY="685.0" mnemonicParsing="false" onAction="#exitProgramme"
+            text="Exit">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="18.0"/>
+        </font>
+    </Button>
 </AnchorPane>
 

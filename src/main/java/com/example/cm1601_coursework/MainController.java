@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class MainController {
 
@@ -21,7 +22,7 @@ public class MainController {
 
     @FXML
     public void switchToAddDriverDetails(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("AddDriverDetails.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddDriverDetails.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
 
@@ -41,7 +42,7 @@ public class MainController {
         stage.show();
     }
     public void switchToDeleteDriverDetails(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("DeleteDriverDetails.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("DeleteDriverDetails.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
 
@@ -61,7 +62,7 @@ public class MainController {
         stage.show();
     }
     public void switchToLoadSavedData(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("LoadSavedData.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoadSavedData.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
 
@@ -81,7 +82,7 @@ public class MainController {
         stage.show();
     }
     public void switchToSaveCurrentData(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("SaveCurrentData.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SaveCurrentData.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
 
@@ -101,7 +102,7 @@ public class MainController {
         stage.show();
     }
     public void switchToStimulateRandomRace(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("SimulateRandomRace.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SimulateRandomRace.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
 
@@ -133,7 +134,7 @@ public class MainController {
         stage.show();
     }
     public void switchToUpdateDriverDetails(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("UpdateDriverDetails.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("UpdateDriverDetails.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
 
@@ -153,7 +154,7 @@ public class MainController {
         stage.show();
     }
     public void switchToViewRaceTable(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("ViewRaceTable.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ViewRaceTable.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
 
@@ -172,8 +173,28 @@ public class MainController {
         stage.setScene(scene);
         stage.show();
     }
+    public static void switchToMenu(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(MainController.class.getResource("MainMenu.fxml")));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+
+        File file01 = new File("src/image02.jpg");
+        Image image01 = new Image(file01.toURI().toString());
+        ImageView imageView01 = new ImageView(image01);
+        imageView01.setFitHeight(750);
+        imageView01.setFitWidth(400);
+        imageView01.setLayoutX(0);
+        imageView01.setLayoutY(0);
+
+        if (root instanceof Pane) {
+            ((Pane) root).getChildren().add(imageView01);
+        }
+
+        stage.setScene(scene);
+        stage.show();
+    }
     public void switchToViewStandingTable(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("ViewStandingTable.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ViewStandingTable.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
