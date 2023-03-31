@@ -1,0 +1,20 @@
+Circuit de Norway,24-08-2023
+Circuit de Nyirád,26-06-2023
+Circuit de Höljes,22-07-2023
+Circuit de Montalegre,25-11-2023
+Circuit de Barcelona,26-12-2023
+Circuit de Rīga,25-05-2023
+Circuit de Faleyras,14-09-2023
+Circuit de Kouvola,21-05-2023
+Circuit de Estering,02-10-2023
+Circuit de Lousada,18-06-2023
+Circuit de Maasmechelen,09-07-2023
+Circuit de Greinbach,29-10-2023
+Circuit de Essay,19-08-2023
+Circuit de Dreux,23-09-2023
+Circuit de Pont-de-Vaux,17-06-2023
+Circuit de Melk,05-11-2023
+Circuit de Buxtehude,16-07-2023
+Circuit de Maggiora,30-07-2023
+Circuit de Greinbach II,14-10-2023
+Circuit de Valkenswaard,02-09-2023
