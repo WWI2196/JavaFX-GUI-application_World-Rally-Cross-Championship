@@ -55,11 +55,13 @@ public class DeleteDriverDetailsController {
             if (deleteNameTextField.getText().toUpperCase().equals(item.get(0).toString())) {
                 errorDeleteText.setTextFill(javafx.scene.paint.Color.GREEN);
                 errorDeleteText.setText("Driver found");
+
                 nameLabel.setText(item.get(0).toString());
                 ageLabel.setText(item.get(1).toString());
                 teamLabel.setText(item.get(2).toString());
                 carLabel.setText(item.get(3).toString());
                 pointsLabel.setText(item.get(4).toString());
+
                 deleteAllowed = true;
                 break;
             }else {
@@ -78,32 +80,32 @@ public class DeleteDriverDetailsController {
                         dataRepository.remove(item);
                         successDeleteText.setTextFill(javafx.scene.paint.Color.GREEN);
                         successDeleteText.setText("Successfully deleted " + deleteNameTextField.getText().toUpperCase());
-                        nameLabel.setText("");
-                        ageLabel.setText("");
-                        teamLabel.setText("");
-                        carLabel.setText("");
-                        pointsLabel.setText("");
-                        errorDeleteText.setText("");
-                        deleteNameTextField.setText("");
+                        nameLabel.setText(null);
+                        ageLabel.setText(null);
+                        teamLabel.setText(null);
+                        carLabel.setText(null);
+                        pointsLabel.setText(null);
+                        errorDeleteText.setText(null);
+                        deleteNameTextField.setText(null);
 
-                        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event01 -> successDeleteText.setText("")));
+
+                        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event01 -> successDeleteText.setText(null)));
                         timeline.play();
+
+                        break;
 
                     } catch (IllegalAccessError e) {
                         Window owner = deleteButton.getScene().getWindow();
                         AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
                                 "Invalid input.");
-                        throw new RuntimeException(e.getMessage());
                     }
-                }else {
-                    AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, deleteButton.getScene().getWindow(), "Error!",
-                            "No data found.");
                 }
             }
+
         }else{
             Window owner = deleteButton.getScene().getWindow();
             AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
-                    "Driver not found. Please check the name and try again.");
+                    "Driver not found. Please try again.");
 
         }
     }

@@ -81,8 +81,7 @@ public class ViewStandingTableController implements Initializable {
                     pointsColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getPoints()).asObject());
 
                     standingTable.getItems().addAll(data);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
+                } catch (Exception ignored) {
                 }
             }
         });

@@ -55,8 +55,7 @@ public class ViewRaceTableController implements Initializable {
             races.sort(Comparator.comparing(Race::getDate));
             raceTable.getItems().addAll(races);
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignored) {
         }
     }
     public static class Race{

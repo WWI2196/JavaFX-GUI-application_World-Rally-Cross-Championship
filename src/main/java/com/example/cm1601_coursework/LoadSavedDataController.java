@@ -59,23 +59,23 @@ public class LoadSavedDataController implements Initializable {
                 successTextLabel.setText("Data loaded successfully.");
                 loadDataTime = false;
 
-                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), ae -> successTextLabel.setText("")));
+                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), ae -> successTextLabel.setText(null)));
                 timeline.play();
 
 
             } catch (FileNotFoundException e) {
                 successTextLabel.setTextFill(javafx.scene.paint.Color.RED);
                 successTextLabel.setText("No data to load.");
-                throw new RuntimeException(e);
+
             } catch (NumberFormatException e) {
                 successTextLabel.setTextFill(javafx.scene.paint.Color.RED);
                 successTextLabel.setText("Data is corrupted.");
-                throw new RuntimeException(e);
+
             }
         }else {
             Window owner = loadSavedDataButton.getScene().getWindow();
             AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "System Alert!",
-                    "Loading driver details again is strictly prohibited \nto avoid duplication of data that has already been loaded.");
+                    "Loading driver details again is strictly prohibited to avoid duplication of data that has already been loaded.");
         }
     }
 
@@ -94,7 +94,6 @@ public class LoadSavedDataController implements Initializable {
             Window owner = loadSavedDataButton.getScene().getWindow();
             AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
                     "No data to load.");
-            throw new RuntimeException(e);
         }
     }
 

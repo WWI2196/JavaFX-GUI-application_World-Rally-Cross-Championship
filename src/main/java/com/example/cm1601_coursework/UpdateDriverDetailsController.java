@@ -71,7 +71,7 @@ public class UpdateDriverDetailsController {
                 driverNameSearchLabel.setTextFill(javafx.scene.paint.Color.RED);
                 driverNameSearchLabel.setText("Driver Name: " + updateNameTextField.getText() + " does not exist.");
 
-                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> driverNameSearchLabel.setText("")));
+                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> driverNameSearchLabel.setText(null)));
                 timeline.play();
 
             }
@@ -81,16 +81,22 @@ public class UpdateDriverDetailsController {
     public void checkAgeIsNumber() {
         try {
             Integer.parseInt(newDriverAgeText.getText());
-            errorAgeLabel.setText("");
-        } catch (NumberFormatException error01) {
-            errorAgeLabel.setText("Error: Age must be a integer");
+            errorAgeLabel.setText(null);
+
+            if (Integer.parseInt(newDriverAgeText.getText()) < 15 && Integer.parseInt(newDriverAgeText.getText()) > 99) {
+                allowUpdate = false;
+                throw new NumberFormatException();
+            }
+
+        } catch (NumberFormatException e) {
+            errorAgeLabel.setText("Error: Enter a valid age");
         }
     }
 
     public void checkPointsIsNumber() {
         try {
             Integer.parseInt(newDriverPointsText.getText());
-            errorPointsLabel.setText("");
+            errorPointsLabel.setText(null);
         } catch (NumberFormatException error02) {
             errorPointsLabel.setText("Error: Points must be a integer");
         }
@@ -108,26 +114,26 @@ public class UpdateDriverDetailsController {
 
                         successUpdateText.setTextFill(javafx.scene.paint.Color.GREEN);
                         successUpdateText.setText("Driver details updated successfully");
-                        driverNameSearchLabel.setText("");
-                        updateNameTextField.setText("");
-                        newDriverAgeText.setText("");
-                        newDriverTeamText.setText("");
-                        newDriverCarText.setText("");
-                        newDriverPointsText.setText("");
+                        driverNameSearchLabel.setText(null);
+                        updateNameTextField.setText(null);
+                        newDriverAgeText.clear();
+                        newDriverTeamText.clear();
+                        newDriverCarText.clear();
+                        newDriverPointsText.clear();
 
-                        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> successUpdateText.setText("")));
+                        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> successUpdateText.setText(null)));
                         timeline.play();
-                    }catch (NumberFormatException error03) {
+                    }catch (NumberFormatException e) {
                         Window owner = updateButton.getScene().getWindow();
                         AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
-                                "Please enter a valid age and points");
+                                "Please enter valid age and points");
                     }
                 }
             }
         }else {
             Window owner = updateButton.getScene().getWindow();
             AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
-                    "Driver details did not update.\nPlease check the driver name and try again.");
+                    "Driver details did not update.\nPlease check and try again.");
         }
     }
 

@@ -38,7 +38,7 @@ public class SaveCurrentDataController {
             successLabel.setTextFill(javafx.scene.paint.Color.RED);
             successLabel.setText("No data to append.");
 
-            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), ae -> successLabel.setText("")));
+            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), ae -> successLabel.setText(null)));
             timeline.play();
         }else {
             saveAllowed = true;
@@ -67,7 +67,7 @@ public class SaveCurrentDataController {
                 writer.close();
 
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), ae -> {
-                    successLabel.setText("");
+                    successLabel.setText(null);
                     progressBar.setProgress(0.0);
                 }));
                 timeline.play();
@@ -76,8 +76,6 @@ public class SaveCurrentDataController {
                 Window owner = appendButton.getScene().getWindow();
                 AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
                         "Error in appending data.");
-
-                throw new RuntimeException(e);
             }
         }
     }
@@ -115,7 +113,7 @@ public class SaveCurrentDataController {
                 writer.close();
 
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), ae -> {
-                    successLabel.setText("");
+                    successLabel.setText(null);
                     progressBar.setProgress(0.0);
                 }));
                 timeline.play();
@@ -124,8 +122,6 @@ public class SaveCurrentDataController {
                 Window owner = overwriteButton.getScene().getWindow();
                 AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
                         "Error in overwriting data.");
-
-                throw new RuntimeException(e);
             }
         }
     }

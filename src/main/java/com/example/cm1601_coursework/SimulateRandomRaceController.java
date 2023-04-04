@@ -70,8 +70,7 @@ public class SimulateRandomRaceController implements Initializable {
                 try {
                     loadRaceDetails();
                     setProgressBar();
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
+                } catch (Exception ignored) {
                 }
             }
         });

@@ -53,12 +53,16 @@ public class AddDriverDetailsController {
     Label pointTextError;
     @FXML
     public void checkName() {
-        for (ArrayList<Object> item : dataRepository) {
-            if (nameTextField.getText().toUpperCase().equals(item.get(0).toString())) {
-                nameTextError.setText("Error: Name already exists");
-            } else {
-                nameTextError.setText("");
+        try {
+            for (ArrayList<Object> item : dataRepository) {
+                if (nameTextField.getText().toUpperCase().equals(item.get(0).toString())) {
+                    throw new Exception();
+                } else {
+                    nameTextError.setText(null);
+                }
             }
+        } catch (Exception e) {
+            nameTextError.setText("Error: Name already exists");
         }
     }
 
@@ -66,9 +70,12 @@ public class AddDriverDetailsController {
     public void checkAgeIsNumber() {
         try {
             Integer.parseInt(ageField.getText());
-            ageTextError.setText("");
-        } catch (NumberFormatException error01) {
-            ageTextError.setText("Error: Age must be a integer number");
+            ageTextError.setText(null);
+            if (Integer.parseInt(ageField.getText()) < 15 && Integer.parseInt(ageField.getText()) > 99) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+            ageTextError.setText("Error: Enter a valid age");
         }
     }
 
@@ -76,40 +83,48 @@ public class AddDriverDetailsController {
     public void checkPointsIsNumber() {
         try {
             Integer.parseInt(pointsField.getText());
-            pointTextError.setText("");
-        } catch (NumberFormatException error02) {
-            pointTextError.setText("Error: Points must be a integer number");
+            pointTextError.setText(null);
+        } catch (NumberFormatException e) {
+            pointTextError.setText("Points must be a integer");
         }
     }
+
     @FXML
     public void initialize() {
         submitButton.setOnAction(event -> {
             try {
-                String name = nameTextField.getText();
-                int age = Integer.parseInt(ageField.getText());
-                String team = teamTextField.getText();
-                String carModel = carTextField.getText();
-                int points = Integer.parseInt(pointsField.getText());
-
-                if (name.isEmpty()) {
-                    throw new IllegalArgumentException("Error: Name cannot be empty.");
-                }
-
-                if (ageField.getText().isEmpty()) {
-                    throw new NumberFormatException("Error: Age cannot be empty.");
-                }
-
-                try {
-                    Integer.parseInt(ageField.getText());
-                } catch (NumberFormatException e) {
-                    throw new IllegalArgumentException("Error: Age must be a number");
+                if (nameTextField.getText().isEmpty()) {
+                    throw new IllegalArgumentException("Name cannot be empty.");
                 }
 
                 for (ArrayList<Object> item : dataRepository) {
-                    if (name.toUpperCase().equals(item.get(0).toString())) {
-                        throw new IllegalArgumentException("Error: Name already exists");
+                    if (nameTextField.getText().toUpperCase().equals(item.get(0).toString())) {
+                        throw new IllegalArgumentException("Name already exists");
                     }
                 }
+
+                String name = nameTextField.getText();
+
+                try {
+                    Integer.parseInt(ageField.getText());
+                    if (ageField.getText().isEmpty() || Integer.parseInt(ageField.getText()) < 15 || Integer.parseInt(ageField.getText()) > 99) {
+                        throw new NumberFormatException();
+                    }
+                } catch (NumberFormatException e) {
+                    throw new IllegalArgumentException("Enter a valid age.");
+                }
+
+                int age = Integer.parseInt(ageField.getText());
+                String team = teamTextField.getText();
+                String carModel = carTextField.getText();
+
+                try {
+                    Integer.parseInt(pointsField.getText());
+                } catch (NumberFormatException e) {
+                    throw new IllegalArgumentException("Points must be a integer");
+                }
+
+                int points = Integer.parseInt(pointsField.getText());
 
                 ArrayList<Object> dataCompile = new ArrayList<>();
                 dataCompile.add(name.toUpperCase());
@@ -127,14 +142,13 @@ public class AddDriverDetailsController {
                 pointsField.clear();
 
 
-                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event01 -> successText.setText("")));
+                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event01 -> successText.setText(null)));
                 timeline.play();
 
             } catch (IllegalArgumentException e) {
                 Window owner = submitButton.getScene().getWindow();
                 AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
-                        "Invalid input. Please try again.");
-                throw new RuntimeException();
+                        "Invalid input. "+e.getMessage());
             }
         });
     }
