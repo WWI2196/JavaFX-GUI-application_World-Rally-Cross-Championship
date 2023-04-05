@@ -33,7 +33,7 @@ class DeleteDriverDetailsTest {
 
     @Test
     @Order(1)
-    void checkName() {
+    void checkExistingName() {
         DeleteDriverDetails deleteDriverDetails = new DeleteDriverDetails();
 
         List<Object> expected = Arrays.asList("LEWIS HAMILTON", 35, "MERCEDES", "W11", 94);
@@ -43,6 +43,16 @@ class DeleteDriverDetailsTest {
 
     @Test
     @Order(2)
+    void checkNonExistingName() {
+        DeleteDriverDetails deleteDriverDetails = new DeleteDriverDetails();
+
+        List<Object> expected = null;
+        List<Object> actual = deleteDriverDetails.checkName("MAX VERSTAPPEN");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @Order(3)
     void deleteDriver() {
         DeleteDriverDetails deleteDriverDetails = new DeleteDriverDetails();
 

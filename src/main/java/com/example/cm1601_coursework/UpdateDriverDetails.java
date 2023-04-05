@@ -1,6 +1,7 @@
 package com.example.cm1601_coursework;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static com.example.cm1601_coursework.AddDriverDetails.data_Repository;
@@ -29,7 +30,7 @@ public class UpdateDriverDetails {
 
             }
         }
-        return null;
+        return Collections.singletonList("Not found");
     }
 
     public String checkAgeIsNumber(String age) {
@@ -38,16 +39,16 @@ public class UpdateDriverDetails {
             if(Integer.parseInt(age) < 15 || Integer.parseInt(age) > 99 || age.isEmpty()) {
                 throw new NumberFormatException();
             }
+            return age;
         } catch (NumberFormatException e) {
             return "Error: Enter a valid age";
         }
-        return null;
     }
 
     public String checkPointsIsNumber(String points) {
         try {
             Integer.parseInt(points);
-            return null;
+            return points;
         } catch (Exception e) {
             return "Error: Points must an integer";
         }
@@ -77,7 +78,7 @@ public class UpdateDriverDetails {
             return data_Repository.get(index);
 
         } catch (IllegalArgumentException e) {
-            return null;
+            return Collections.singletonList("Not updated");
         }
     }
 

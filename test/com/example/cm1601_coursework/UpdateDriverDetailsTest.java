@@ -4,6 +4,7 @@ import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static com.example.cm1601_coursework.AddDriverDetails.data_Repository;
@@ -25,7 +26,7 @@ class UpdateDriverDetailsTest {
         driver2.add("LEWIS HAMILTON");
         driver2.add(35);
         driver2.add("MERCEDES");
-        driver2.add("W11");
+        driver2.add("WRC-15");
         driver2.add(94);
         data_Repository.add(driver2);
 
@@ -33,17 +34,27 @@ class UpdateDriverDetailsTest {
 
     @Test
     @Order(1)
-    void checkName() {
+    void checkNonExistingName() {
         UpdateDriverDetails updateDriverDetails = new UpdateDriverDetails();
 
-        List<Object> expected = Arrays.asList("LEWIS HAMILTON", 35, "MERCEDES", "W11", 94);
-        List<Object> actual = updateDriverDetails.checkName("LEWIS HAMILTON");
+        List<Object> expected = Collections.singletonList("Not found");
+        List<Object> actual = updateDriverDetails.checkName("OTT TANAK");
         assertEquals(expected, actual);
     }
 
     @Test
     @Order(2)
-    void checkAgeIsNumber() {
+    void checkExistingName() {
+        UpdateDriverDetails updateDriverDetails = new UpdateDriverDetails();
+
+        List<Object> expected = Arrays.asList("LEWIS HAMILTON", 35, "MERCEDES", "WRC-15", 94);
+        List<Object> actual = updateDriverDetails.checkName("LEWIS HAMILTON");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @Order(3)
+    void checkUpdatedAgeNotNumber() {
         UpdateDriverDetails updateDriverDetails = new UpdateDriverDetails();
         String expected = "Error: Enter a valid age";
         String actual = updateDriverDetails.checkAgeIsNumber("abc");
@@ -51,21 +62,38 @@ class UpdateDriverDetailsTest {
     }
 
     @Test
-    @Order(3)
-    void checkPointsIsNumber() {
+    @Order(4)
+    void checkUpdatedAgeIsNumber() {
+        UpdateDriverDetails updateDriverDetails = new UpdateDriverDetails();
+        String expected = "22";
+        String actual = updateDriverDetails.checkAgeIsNumber("22");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @Order(5)
+    void checkUpdatedPointsIsNotNumber() {
+        UpdateDriverDetails updateDriverDetails = new UpdateDriverDetails();
+        String expected = "99";
+        String actual = updateDriverDetails.checkPointsIsNumber("99");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @Order(6)
+    void checkUpdatedPointsIsNumber() {
         UpdateDriverDetails updateDriverDetails = new UpdateDriverDetails();
         String expected = "Error: Points must an integer";
         String actual = updateDriverDetails.checkPointsIsNumber("abc");
         assertEquals(expected, actual);
     }
 
-
     @Test
-    @Order(4)
+    @Order(7)
     void updateDriverDetails() {
         UpdateDriverDetails updateDriverDetails = new UpdateDriverDetails();
-        List<Object> expected = Arrays.asList("LEWIS HAMILTON", 35, "MERCEDES", "WX-11", 99);
-        List<Object> actual = updateDriverDetails.updateDriverDetails("35", "MERCEDES", "WX-11", "99");
+        List<Object> expected = Arrays.asList("LEWIS HAMILTON", 35, "MERCEDES", "WX-12", 99);
+        List<Object> actual = updateDriverDetails.updateDriverDetails("35", "MERCEDES", "WX-12", "99");
         assertEquals(expected, actual);
     }
 }
