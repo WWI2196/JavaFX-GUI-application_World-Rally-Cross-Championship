@@ -50,9 +50,12 @@ public class DeleteDriverDetailsController {
     @FXML
 
     boolean deleteAllowed = false;
+    int deleteIndex;
     public void checkName() {
         for (ArrayList<Object> item : dataRepository) {
             if (deleteNameTextField.getText().toUpperCase().equals(item.get(0).toString())) {
+                deleteIndex = dataRepository.indexOf(item);
+
                 errorDeleteText.setTextFill(javafx.scene.paint.Color.GREEN);
                 errorDeleteText.setText("Driver found");
 
@@ -63,10 +66,20 @@ public class DeleteDriverDetailsController {
                 pointsLabel.setText(item.get(4).toString());
 
                 deleteAllowed = true;
+
+                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event01 -> errorDeleteText.setText(null)));
+                timeline.play();
+
                 break;
+
             }else {
                 errorDeleteText.setTextFill(javafx.scene.paint.Color.RED);
-                errorDeleteText.setText("Error: No data found.");
+                errorDeleteText.setText("No data found.");
+
+                deleteAllowed = false;
+
+                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event01 -> errorDeleteText.setText(null)));
+                timeline.play();
             }
         }
     }
@@ -74,39 +87,32 @@ public class DeleteDriverDetailsController {
     @FXML
     public void initiate(){
         if (deleteAllowed) {
-            for (ArrayList<Object> item : dataRepository) {
-                if (deleteNameTextField.getText().toUpperCase().equals(item.get(0).toString())) {
-                    try {
-                        dataRepository.remove(item);
-                        successDeleteText.setTextFill(javafx.scene.paint.Color.GREEN);
-                        successDeleteText.setText("Successfully deleted " + deleteNameTextField.getText().toUpperCase());
-                        nameLabel.setText(null);
-                        ageLabel.setText(null);
-                        teamLabel.setText(null);
-                        carLabel.setText(null);
-                        pointsLabel.setText(null);
-                        errorDeleteText.setText(null);
-                        deleteNameTextField.setText(null);
+            try {
+                dataRepository.remove(dataRepository.get(deleteIndex));
+
+                successDeleteText.setTextFill(javafx.scene.paint.Color.GREEN);
+                successDeleteText.setText("Successfully deleted " + nameLabel.getText().toUpperCase());
+
+                nameLabel.setText(null);
+                ageLabel.setText(null);
+                teamLabel.setText(null);
+                carLabel.setText(null);
+                pointsLabel.setText(null);
+                errorDeleteText.setText(null);
+                deleteNameTextField.setText(null);
+
+                deleteAllowed = false;
+
+                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event01 -> successDeleteText.setText(null)));
+                timeline.play();
 
 
-                        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event01 -> successDeleteText.setText(null)));
-                        timeline.play();
-
-                        break;
-
-                    } catch (IllegalAccessError e) {
-                        Window owner = deleteButton.getScene().getWindow();
-                        AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
-                                "Invalid input.");
-                    }
-                }
+            } catch (IllegalAccessError ignored) {
             }
-
-        }else{
+        }else {
             Window owner = deleteButton.getScene().getWindow();
             AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
-                    "Driver not found. Please try again.");
-
+                    "Driver not found. Please search again.");
         }
     }
 

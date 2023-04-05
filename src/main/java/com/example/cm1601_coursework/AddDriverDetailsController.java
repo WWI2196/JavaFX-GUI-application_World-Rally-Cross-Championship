@@ -99,7 +99,7 @@ public class AddDriverDetailsController {
 
                 for (ArrayList<Object> item : dataRepository) {
                     if (nameTextField.getText().toUpperCase().equals(item.get(0).toString())) {
-                        throw new IllegalArgumentException("Name already exists");
+                        throw new IllegalArgumentException("Name already exists.");
                     }
                 }
 
@@ -121,7 +121,7 @@ public class AddDriverDetailsController {
                 try {
                     Integer.parseInt(pointsField.getText());
                 } catch (NumberFormatException e) {
-                    throw new IllegalArgumentException("Points must be a integer");
+                    throw new IllegalArgumentException("Points must be a integer.");
                 }
 
                 int points = Integer.parseInt(pointsField.getText());
@@ -134,7 +134,7 @@ public class AddDriverDetailsController {
                 dataCompile.add(points);
                 dataRepository.add(new ArrayList<>(dataCompile));
 
-                successText.setText("Driver details added successfully!");
+                successText.setText("Driver details added successfully");
                 nameTextField.clear();
                 ageField.clear();
                 teamTextField.clear();
@@ -147,7 +147,7 @@ public class AddDriverDetailsController {
 
             } catch (IllegalArgumentException e) {
                 Window owner = submitButton.getScene().getWindow();
-                AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
+                AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error",
                         "Invalid input. "+e.getMessage());
             }
         });

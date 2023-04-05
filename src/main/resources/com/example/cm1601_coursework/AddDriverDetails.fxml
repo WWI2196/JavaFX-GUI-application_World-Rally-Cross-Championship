@@ -83,9 +83,9 @@
             <Font size="13.0" />
         </font>
     </Label>
-    <Label fx:id="successText" layoutX="467.0" layoutY="578.0" prefHeight="17.0" prefWidth="370.0" textFill="#02b50f">
+    <Label fx:id="successText" layoutX="506.0" layoutY="572.0" prefHeight="17.0" prefWidth="370.0" textFill="#02b50f">
         <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
         </font>
     </Label>
     <Label fx:id="pointTextError" layoutX="629.0" layoutY="443.0" prefHeight="19.0" prefWidth="269.0" textFill="RED">

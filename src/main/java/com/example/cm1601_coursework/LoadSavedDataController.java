@@ -75,7 +75,7 @@ public class LoadSavedDataController implements Initializable {
         }else {
             Window owner = loadSavedDataButton.getScene().getWindow();
             AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "System Alert!",
-                    "Loading driver details again is strictly prohibited to avoid duplication of data that has already been loaded.");
+                    "To avoid data duplication, loading Driver details again is strictly prohibited.");
         }
     }
 

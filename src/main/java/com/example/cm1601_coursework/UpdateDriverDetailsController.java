@@ -52,24 +52,33 @@ public class UpdateDriverDetailsController {
     Label successUpdateText;
 
     @FXML
-
-    boolean allowUpdate = false;
+    boolean updateAllowed = false;
+    int index;
     public void checkName() {
         for (ArrayList<Object> item : dataRepository) {
             if (updateNameTextField.getText().toUpperCase().equals(item.get(0).toString())) {
+                index = dataRepository.indexOf(item);
+
                 newDriverAgeText.setText(item.get(1).toString());
                 newDriverTeamText.setText(item.get(2).toString());
                 newDriverCarText.setText(item.get(3).toString());
                 newDriverPointsText.setText(item.get(4).toString());
 
                 driverNameSearchLabel.setTextFill(javafx.scene.paint.Color.GREEN);
-                driverNameSearchLabel.setText("Driver : " + item.get(0).toString() +" found.");
+                driverNameSearchLabel.setText("Driver found.");
 
-                allowUpdate = true;
+                updateAllowed = true;
+
+                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> driverNameSearchLabel.setText(null)));
+                timeline.play();
+
                 break;
+
             }else {
                 driverNameSearchLabel.setTextFill(javafx.scene.paint.Color.RED);
-                driverNameSearchLabel.setText("Driver Name: " + updateNameTextField.getText() + " does not exist.");
+                driverNameSearchLabel.setText("No data found.");
+
+                updateAllowed = false;
 
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> driverNameSearchLabel.setText(null)));
                 timeline.play();
@@ -82,9 +91,7 @@ public class UpdateDriverDetailsController {
         try {
             Integer.parseInt(newDriverAgeText.getText());
             errorAgeLabel.setText(null);
-
-            if (Integer.parseInt(newDriverAgeText.getText()) < 15 && Integer.parseInt(newDriverAgeText.getText()) > 99) {
-                allowUpdate = false;
+            if (Integer.parseInt(newDriverAgeText.getText()) < 15 || Integer.parseInt(newDriverAgeText.getText()) > 99 || newDriverAgeText.getText().isEmpty()) {
                 throw new NumberFormatException();
             }
 
@@ -97,43 +104,57 @@ public class UpdateDriverDetailsController {
         try {
             Integer.parseInt(newDriverPointsText.getText());
             errorPointsLabel.setText(null);
-        } catch (NumberFormatException error02) {
-            errorPointsLabel.setText("Error: Points must be a integer");
+        } catch (NumberFormatException e) {
+            errorPointsLabel.setText("Error: Points must be an integer");
         }
     }
 
     public void updateDriverDetails() {
-        if (allowUpdate) {
-            for (ArrayList<Object> item : dataRepository) {
-                if (updateNameTextField.getText().toUpperCase().equals(item.get(0).toString())) {
-                    try {
-                        item.set(1, Integer.parseInt(newDriverAgeText.getText()));
-                        item.set(2, newDriverTeamText.getText());
-                        item.set(3, newDriverCarText.getText());
-                        item.set(4, Integer.parseInt(newDriverPointsText.getText()));
-
-                        successUpdateText.setTextFill(javafx.scene.paint.Color.GREEN);
-                        successUpdateText.setText("Driver details updated successfully");
-                        driverNameSearchLabel.setText(null);
-                        updateNameTextField.setText(null);
-                        newDriverAgeText.clear();
-                        newDriverTeamText.clear();
-                        newDriverCarText.clear();
-                        newDriverPointsText.clear();
-
-                        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> successUpdateText.setText(null)));
-                        timeline.play();
-                    }catch (NumberFormatException e) {
-                        Window owner = updateButton.getScene().getWindow();
-                        AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
-                                "Please enter valid age and points");
+        if (updateAllowed){
+            try {
+                try {
+                    Integer.parseInt(newDriverAgeText.getText());
+                    if (Integer.parseInt(newDriverAgeText.getText()) < 15 || Integer.parseInt(newDriverAgeText.getText()) > 99 || newDriverAgeText.getText().isEmpty()) {
+                        throw new NumberFormatException();
                     }
+
+                } catch (NumberFormatException e) {
+                    throw new NumberFormatException("Enter a valid age");
                 }
+
+                dataRepository.get(index).set(1, Integer.parseInt(newDriverAgeText.getText()));
+                dataRepository.get(index).set(2, newDriverTeamText.getText());
+                dataRepository.get(index).set(3, newDriverCarText.getText());
+
+                try {
+                    Integer.parseInt(newDriverPointsText.getText());
+                    errorPointsLabel.setText(null);
+                } catch (NumberFormatException e) {
+                    throw new NumberFormatException("Points must be a integer");
+                }
+                dataRepository.get(index).set(4, Integer.parseInt(newDriverPointsText.getText()));
+
+                successUpdateText.setTextFill(javafx.scene.paint.Color.GREEN);
+                successUpdateText.setText("Driver details updated successfully");
+                driverNameSearchLabel.setText(null);
+                updateNameTextField.setText(null);
+                newDriverAgeText.clear();
+                newDriverTeamText.clear();
+                newDriverCarText.clear();
+                newDriverPointsText.clear();
+
+                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> successUpdateText.setText(null)));
+                timeline.play();
+
+            }catch (NumberFormatException e) {
+                Window owner = updateButton.getScene().getWindow();
+                AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error",
+                        "Invalid input. "+e.getMessage());
             }
         }else {
             Window owner = updateButton.getScene().getWindow();
-            AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
-                    "Driver details did not update.\nPlease check and try again.");
+            AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error",
+                    "Driver not found. Please search again.");
         }
     }
 

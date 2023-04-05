@@ -59,7 +59,7 @@ public class SimulateRandomRaceController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> {
             if (dataRepository.size() < 3) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "To stimulate a race, at least three players needed.", ButtonType.OK);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "A minimum of three players are required to stimulate a race.", ButtonType.OK);
                 alert.setHeaderText(null);
                 alert.initOwner(progressBar.getScene().getWindow());
                 Optional<ButtonType> result = alert.showAndWait();

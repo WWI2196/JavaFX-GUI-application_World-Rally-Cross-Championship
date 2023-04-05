@@ -4,22 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6da1b6e-f960-4376-87b5-6beb6541d64b" name="Changes" comment="4.10PM">
-      <change afterPath="$PROJECT_DIR$/lib/byte-buddy-1.14.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/byte-buddy-agent-1.14.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/mockito-core-5.2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/objenesis-3.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/com/example/cm1601_coursework/AddDriverDetailsControllerTest.java" afterDir="false" />
+    <list default="true" id="a6da1b6e-f960-4376-87b5-6beb6541d64b" name="Changes" comment="9.23pm">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/AddDriverDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/DeleteDriverDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/UpdateDriverDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/com/example/cm1601_coursework/AddDriverDetailsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/com/example/cm1601_coursework/DeleteDriverDetailsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/com/example/cm1601_coursework/UpdateDriverDetailsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/byte-buddy-1.14.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/byte-buddy-agent-1.14.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mockito-core-5.2.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/objenesis-3.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Driver_details.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Driver_details.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/AddDriverDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/AddDriverDetailsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/DeleteDriverDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/DeleteDriverDetailsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/LoadSavedDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/LoadSavedDataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/SaveCurrentDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/SaveCurrentDataController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/SimulateRandomRaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/SimulateRandomRaceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/UpdateDriverDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/UpdateDriverDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/ViewRaceTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/ViewRaceTableController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/ViewStandingTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/ViewStandingTableController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cm1601_coursework/AddDriverDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cm1601_coursework/AddDriverDetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cm1601_coursework/DeleteDriverDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cm1601_coursework/DeleteDriverDetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cm1601_coursework/UpdateDriverDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cm1601_coursework/UpdateDriverDetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/example/cm1601_coursework/AddDriverDetailsControllerTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +36,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
         <option value="JUnit5 Test Class" />
       </list>
     </option>
@@ -63,9 +70,9 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.45747125&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -77,7 +84,7 @@
       <recent name="com.example.cm1601_coursework" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.UpdateDriverDetailsTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.cm1601_coursework.Main" />
       <module name="CM1601_Coursework" />
@@ -91,7 +98,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AddDriverDetailsControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DeleteDriverDetailsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CM1601_Coursework" />
       <extension name="coverage">
         <pattern>
@@ -100,13 +107,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.example.cm1601_coursework" />
-      <option name="MAIN_CLASS_NAME" value="com.example.cm1601_coursework.AddDriverDetailsControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="com.example.cm1601_coursework.DeleteDriverDetailsTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AddDriverDetailsControllerTest.checkName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UpdateDriverDetailsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CM1601_Coursework" />
       <extension name="coverage">
         <pattern>
@@ -115,8 +122,39 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.example.cm1601_coursework" />
-      <option name="MAIN_CLASS_NAME" value="com.example.cm1601_coursework.AddDriverDetailsControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="com.example.cm1601_coursework.UpdateDriverDetailsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UpdateDriverDetailsTest.checkName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CM1601_Coursework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.cm1601_coursework.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.cm1601_coursework" />
+      <option name="MAIN_CLASS_NAME" value="com.example.cm1601_coursework.UpdateDriverDetailsTest" />
       <option name="METHOD_NAME" value="checkName" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UpdateDriverDetailsTest.updateDriverDetails" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CM1601_Coursework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.cm1601_coursework.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.cm1601_coursework" />
+      <option name="MAIN_CLASS_NAME" value="com.example.cm1601_coursework.UpdateDriverDetailsTest" />
+      <option name="METHOD_NAME" value="updateDriverDetails" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -124,9 +162,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UpdateDriverDetailsTest" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.AddDriverDetailsControllerTest.checkName" />
-        <item itemvalue="JUnit.AddDriverDetailsControllerTest" />
+        <item itemvalue="JUnit.UpdateDriverDetailsTest.updateDriverDetails" />
+        <item itemvalue="JUnit.UpdateDriverDetailsTest.checkName" />
+        <item itemvalue="JUnit.DeleteDriverDetailsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -144,7 +184,10 @@
       <workItem from="1680319364668" duration="101000" />
       <workItem from="1680529721280" duration="392000" />
       <workItem from="1680585678960" duration="5735000" />
-      <workItem from="1680612887991" duration="2008000" />
+      <workItem from="1680612887991" duration="5032000" />
+      <workItem from="1680626708345" duration="2583000" />
+      <workItem from="1680679493720" duration="6555000" />
+      <workItem from="1680686556616" duration="9039000" />
     </task>
     <task id="LOCAL-00001" summary="4.10PM">
       <created>1680259218378</created>
@@ -153,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680259218378</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="9.23pm">
+      <created>1680623651332</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1680623651332</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +212,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="4.10PM" />
-    <option name="LAST_COMMIT_MESSAGE" value="4.10PM" />
+    <MESSAGE value="9.23pm" />
+    <option name="LAST_COMMIT_MESSAGE" value="9.23pm" />
   </component>
 </project>
