@@ -18,39 +18,36 @@ import static com.example.cm1601_coursework.AddDriverDetailsController.dataRepos
 
 public class DeleteDriverDetailsController {
     @FXML
-    TextField deleteNameTextField;
+    private TextField deleteNameTextField;
 
     @FXML
-    Button deleteButton;
+    private Button deleteButton;
 
     @FXML
-    Button searchButton;
+    private Label nameLabel;
 
     @FXML
-    Label nameLabel;
+    private Label ageLabel;
 
     @FXML
-    Label ageLabel;
+    private Label teamLabel;
 
     @FXML
-    Label teamLabel;
+    private Label carLabel;
 
     @FXML
-    Label carLabel;
+    private Label pointsLabel;
 
     @FXML
-    Label pointsLabel;
+    private Label successDeleteText;
 
     @FXML
-    Label successDeleteText;
-
-    @FXML
-    Label errorDeleteText;
+    private Label errorDeleteText;
 
     @FXML
 
-    boolean deleteAllowed = false;
-    int deleteIndex;
+    private boolean deleteAllowed = false;
+    private int deleteIndex;
     public void checkName() {
         for (ArrayList<Object> item : dataRepository) {
             if (deleteNameTextField.getText().toUpperCase().equals(item.get(0).toString())) {

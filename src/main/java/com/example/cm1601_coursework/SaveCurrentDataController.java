@@ -19,20 +19,20 @@ import java.util.ArrayList;
 import static com.example.cm1601_coursework.AddDriverDetailsController.dataRepository;
 public class SaveCurrentDataController {
     @FXML
-    Button appendButton;
+    private Button appendButton;
 
     @FXML
-    Button overwriteButton;
+    private Button overwriteButton;
 
     @FXML
-    Label successLabel;
+    private Label successLabel;
 
     @FXML
-    ProgressBar progressBar;
+    private ProgressBar progressBar;
 
 
     @FXML
-    boolean saveAllowed = false;
+    private boolean saveAllowed = false;
     public void appendData() {
         if(dataRepository.size() == 0) {
             successLabel.setTextFill(javafx.scene.paint.Color.RED);

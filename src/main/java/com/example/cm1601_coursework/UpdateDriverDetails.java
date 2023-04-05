@@ -6,7 +6,7 @@ import java.util.List;
 import static com.example.cm1601_coursework.AddDriverDetails.data_Repository;
 
 public class UpdateDriverDetails {
-    static int index;
+    private static int index;
     public List<Object> checkName(String deleteName) {
         for (ArrayList<Object>item : data_Repository) {
             if (deleteName.toUpperCase().equals(item.get(0).toString())) {

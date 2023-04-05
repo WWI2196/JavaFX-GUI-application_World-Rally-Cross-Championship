@@ -17,7 +17,7 @@ import java.util.*;
 public class ViewRaceTableController implements Initializable {
 
     @FXML
-    Label currentDateLabel;
+    private Label currentDateLabel;
 
     @FXML
     private TableColumn<Race, String> circuitColumn;

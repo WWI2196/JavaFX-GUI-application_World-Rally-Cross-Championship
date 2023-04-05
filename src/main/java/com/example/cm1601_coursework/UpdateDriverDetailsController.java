@@ -19,41 +19,39 @@ import static com.example.cm1601_coursework.AddDriverDetailsController.dataRepos
 
 public class UpdateDriverDetailsController {
     @FXML
-    TextField updateNameTextField;
+    private TextField updateNameTextField;
 
     @FXML
-    TextField newDriverAgeText;
+    private TextField newDriverAgeText;
 
     @FXML
-    TextField newDriverTeamText;
+    private TextField newDriverTeamText;
 
     @FXML
-    TextField newDriverCarText;
+    private TextField newDriverCarText;
 
     @FXML
-    TextField newDriverPointsText;
+    private TextField newDriverPointsText;
 
     @FXML
-    Button updateButton;
+    private Button updateButton;
+
 
     @FXML
-    Button searchButton;
+    private Label driverNameSearchLabel;
 
     @FXML
-    Label driverNameSearchLabel;
+    private Label errorAgeLabel;
 
     @FXML
-    Label errorAgeLabel;
+    private Label errorPointsLabel;
 
     @FXML
-    Label errorPointsLabel;
+    private Label successUpdateText;
 
     @FXML
-    Label successUpdateText;
-
-    @FXML
-    boolean updateAllowed = false;
-    int index;
+    private boolean updateAllowed = false;
+    private int index;
     public void checkName() {
         for (ArrayList<Object> item : dataRepository) {
             if (updateNameTextField.getText().toUpperCase().equals(item.get(0).toString())) {

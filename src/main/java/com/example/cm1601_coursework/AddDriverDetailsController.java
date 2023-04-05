@@ -19,38 +19,36 @@ public class AddDriverDetailsController {
     public static ArrayList<ArrayList<Object>> dataRepository = new ArrayList<>();
 
     @FXML
-    TextField nameTextField;
+    private TextField nameTextField;
 
 
     @FXML
-    TextField ageField;
+    private TextField ageField;
 
     @FXML
-    TextField teamTextField;
+    private TextField teamTextField;
 
     @FXML
-    TextField carTextField;
+    private TextField carTextField;
 
     @FXML
-    TextField pointsField;
+    private TextField pointsField;
 
     @FXML
-    Button submitButton;
+    private Button submitButton;
+
 
     @FXML
-    Button backToMenuButton;
+    private Label successText;
 
     @FXML
-    Label successText;
+    private Label nameTextError;
 
     @FXML
-    Label nameTextError;
+    private Label ageTextError;
 
     @FXML
-    Label ageTextError;
-
-    @FXML
-    Label pointTextError;
+    private Label pointTextError;
     @FXML
     public void checkName() {
         try {

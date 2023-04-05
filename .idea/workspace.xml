@@ -4,29 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6da1b6e-f960-4376-87b5-6beb6541d64b" name="Changes" comment="9.23pm">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/AddDriverDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/DeleteDriverDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/UpdateDriverDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/com/example/cm1601_coursework/AddDriverDetailsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/com/example/cm1601_coursework/DeleteDriverDetailsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/com/example/cm1601_coursework/UpdateDriverDetailsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="a6da1b6e-f960-4376-87b5-6beb6541d64b" name="Changes" comment="8.03pm">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/byte-buddy-1.14.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/byte-buddy-agent-1.14.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mockito-core-5.2.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/objenesis-3.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Driver_details.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Driver_details.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/AddDriverDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/AddDriverDetailsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/DeleteDriverDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/DeleteDriverDetailsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/LoadSavedDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/LoadSavedDataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/SimulateRandomRaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/SimulateRandomRaceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/SaveCurrentDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/SaveCurrentDataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/UpdateDriverDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/UpdateDriverDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/UpdateDriverDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/UpdateDriverDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cm1601_coursework/AddDriverDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cm1601_coursework/AddDriverDetails.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cm1601_coursework/DeleteDriverDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cm1601_coursework/DeleteDriverDetails.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cm1601_coursework/UpdateDriverDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cm1601_coursework/UpdateDriverDetails.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/com/example/cm1601_coursework/AddDriverDetailsControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/ViewRaceTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/ViewRaceTableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/ViewStandingTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cm1601_coursework/ViewStandingTableController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +71,7 @@
       <recent name="com.example.cm1601_coursework" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UpdateDriverDetailsTest">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.cm1601_coursework.Main" />
       <module name="CM1601_Coursework" />
@@ -162,8 +149,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UpdateDriverDetailsTest" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.UpdateDriverDetailsTest" />
         <item itemvalue="JUnit.UpdateDriverDetailsTest.updateDriverDetails" />
         <item itemvalue="JUnit.UpdateDriverDetailsTest.checkName" />
         <item itemvalue="JUnit.DeleteDriverDetailsTest" />
@@ -187,7 +174,7 @@
       <workItem from="1680612887991" duration="5032000" />
       <workItem from="1680626708345" duration="2583000" />
       <workItem from="1680679493720" duration="6555000" />
-      <workItem from="1680686556616" duration="9039000" />
+      <workItem from="1680686556616" duration="10518000" />
     </task>
     <task id="LOCAL-00001" summary="4.10PM">
       <created>1680259218378</created>
@@ -203,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680623651332</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="8.03pm">
+      <created>1680705211236</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1680705211236</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,6 +207,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="4.10PM" />
     <MESSAGE value="9.23pm" />
-    <option name="LAST_COMMIT_MESSAGE" value="9.23pm" />
+    <MESSAGE value="8.03pm" />
+    <option name="LAST_COMMIT_MESSAGE" value="8.03pm" />
   </component>
 </project>

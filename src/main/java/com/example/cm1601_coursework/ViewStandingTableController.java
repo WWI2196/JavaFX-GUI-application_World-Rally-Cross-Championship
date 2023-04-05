@@ -20,7 +20,8 @@ import static com.example.cm1601_coursework.AddDriverDetailsController.dataRepos
 public class ViewStandingTableController implements Initializable {
 
     @FXML
-    Button backToMenuButton;
+    private Button backToMenuButton;
+
     @FXML
     private TableColumn<sortedDriverData, String> carModelColumn;
 

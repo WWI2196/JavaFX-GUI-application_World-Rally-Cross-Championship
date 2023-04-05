@@ -22,16 +22,16 @@ import static com.example.cm1601_coursework.AddDriverDetailsController.dataRepos
 public class LoadSavedDataController implements Initializable {
 
     @FXML
-    Label numberOfDriversLabel;
+    private Label numberOfDriversLabel;
 
     @FXML
-    Label successTextLabel;
+    private Label successTextLabel;
 
     @FXML
-    Button loadSavedDataButton;
+    private Button loadSavedDataButton;
 
     @FXML
-    public static boolean loadDataTime = true;
+    private static boolean loadDataTime = true;
 
     public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
         countNumberOfLines();
