@@ -53,13 +53,13 @@ public class AddDriverDetailsController {
     public void checkName() {
         try {
             for (ArrayList<Object> item : dataRepository) {
-                if (nameTextField.getText().toUpperCase().equals(item.get(0).toString())) {
-                    throw new Exception();
+                if (nameTextField.getText().toUpperCase().equals(item.get(0).toString())) { // check if name already exists
+                    throw new Exception(); // if name exists, throw exception
                 } else {
                     nameTextError.setText(null);
                 }
             }
-        } catch (Exception e) {
+        } catch (Exception e) { // if name exists, show error message
             nameTextError.setText("Error: Name already exists");
         }
     }
@@ -67,12 +67,12 @@ public class AddDriverDetailsController {
     @FXML
     public void checkAgeIsNumber() {
         try {
-            Integer.parseInt(ageField.getText());
+            Integer.parseInt(ageField.getText()); // check if age is an integer number
             ageTextError.setText(null);
-            if (Integer.parseInt(ageField.getText()) < 15 && Integer.parseInt(ageField.getText()) > 99) {
-                throw new NumberFormatException();
+            if (Integer.parseInt(ageField.getText()) < 15 && Integer.parseInt(ageField.getText()) > 99) { // check if age is between 15 and 99
+                throw new NumberFormatException(); // if age is not between 15 and 99, throw exception
             }
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException e) { // if age is not an integer number, show error message
             ageTextError.setText("Error: Enter a valid age");
         }
     }
@@ -80,16 +80,16 @@ public class AddDriverDetailsController {
     @FXML
     public void checkPointsIsNumber() {
         try {
-            Integer.parseInt(pointsField.getText());
+            Integer.parseInt(pointsField.getText());// check if points is an integer number
             pointTextError.setText(null);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException e) { // if points is not an integer number, show error message
             pointTextError.setText("Points must be a integer");
         }
     }
 
     @FXML
     public void initialize() {
-        submitButton.setOnAction(event -> {
+        submitButton.setOnAction(event -> {// when submit button is clicked
             try {
                 if (nameTextField.getText().isEmpty()) {
                     throw new IllegalArgumentException("Name cannot be empty.");
@@ -101,7 +101,7 @@ public class AddDriverDetailsController {
                     }
                 }
 
-                String name = nameTextField.getText();
+                String name = nameTextField.getText(); // get name from text field
 
                 try {
                     Integer.parseInt(ageField.getText());
@@ -112,9 +112,9 @@ public class AddDriverDetailsController {
                     throw new IllegalArgumentException("Enter a valid age.");
                 }
 
-                int age = Integer.parseInt(ageField.getText());
-                String team = teamTextField.getText();
-                String carModel = carTextField.getText();
+                int age = Integer.parseInt(ageField.getText()); // get age from text field
+                String team = teamTextField.getText(); // get team from text field
+                String carModel = carTextField.getText(); // get car model from text field
 
                 try {
                     Integer.parseInt(pointsField.getText());
@@ -122,15 +122,15 @@ public class AddDriverDetailsController {
                     throw new IllegalArgumentException("Points must be a integer.");
                 }
 
-                int points = Integer.parseInt(pointsField.getText());
+                int points = Integer.parseInt(pointsField.getText()); // get points from text field
 
-                ArrayList<Object> dataCompile = new ArrayList<>();
-                dataCompile.add(name.toUpperCase());
-                dataCompile.add(age);
-                dataCompile.add(team);
-                dataCompile.add(carModel);
-                dataCompile.add(points);
-                dataRepository.add(new ArrayList<>(dataCompile));
+                ArrayList<Object> dataCompile = new ArrayList<>(); // create array list to store data
+                dataCompile.add(name.toUpperCase()); // add name to array list
+                dataCompile.add(age); // add age to array list
+                dataCompile.add(team); // add team to array list
+                dataCompile.add(carModel); // add car model to array list
+                dataCompile.add(points);   // add points to array list
+                dataRepository.add(new ArrayList<>(dataCompile)); // add array list to data repository
 
                 successText.setText("Driver details added successfully");
                 nameTextField.clear();
@@ -143,7 +143,7 @@ public class AddDriverDetailsController {
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event01 -> successText.setText(null)));
                 timeline.play();
 
-            } catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException e) { // if the fields are empty or invalid, show error message
                 Window owner = submitButton.getScene().getWindow();
                 AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error",
                         "Invalid input. "+e.getMessage());
@@ -152,7 +152,7 @@ public class AddDriverDetailsController {
     }
 
     public void switchToMenu(ActionEvent event) throws IOException {
-        MainController.switchToMenu(event);
+        MainController.switchToMenu(event); // switch to menu
     }
 
     public static class AlertHelper {

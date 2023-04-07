@@ -9,14 +9,14 @@ public class AddDriverDetails {
     public String checkName(String name) {
         try {
             for (ArrayList<Object> item : data_Repository) {
-                if (name.toUpperCase().equals(item.get(0).toString())) {
-                    throw new Exception();
+                if (name.toUpperCase().equals(item.get(0).toString())) { // check if name already exists
+                    throw new Exception(); // if name exists, throw exception
                 } else {
-                    return null;
+                    return null; // if name does not exist, return null
                 }
             }
-        } catch (Exception e) {
-            return "Error: Name already exists";
+        } catch (Exception e) { // if name exists, catch exception
+            return "Error: Name already exists"; // if name exists, return error message
         }
         return null;
     }

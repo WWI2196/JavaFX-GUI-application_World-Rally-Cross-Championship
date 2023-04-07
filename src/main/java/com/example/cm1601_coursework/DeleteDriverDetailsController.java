@@ -14,7 +14,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static com.example.cm1601_coursework.AddDriverDetailsController.dataRepository;
+import static com.example.cm1601_coursework.AddDriverDetailsController.dataRepository; // import dataRepository from AddDriverDetailsController
 
 public class DeleteDriverDetailsController {
     @FXML
