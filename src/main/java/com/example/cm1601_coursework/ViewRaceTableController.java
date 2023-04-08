@@ -22,44 +22,44 @@ public class ViewRaceTableController implements Initializable {
     private Button backToMenu;
 
     @FXML
-    private TableColumn<Race, String> circuitColumn;
+    private TableColumn<Race, String> circuitColumn; // table columns
 
     @FXML
     private TableColumn<Race, LocalDate> dateColumn;
 
     @FXML
-    private TableView<Race> raceTable;
+    private TableView<Race> raceTable; // table view
 
-    private static final String PATH_TO_DETAILS = "src/Race_settings.txt";
+    private static final String PATH_TO_DETAILS = "src/Race_settings.txt"; // path to file
 
     @FXML
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        raceTable.setStyle("-fx-font-family: 'Arial';-fx-font-size: 14pt;");
+    public void initialize(URL url, ResourceBundle resourceBundle) { // initialise table
+        raceTable.setStyle("-fx-font-family: 'Arial';-fx-font-size: 14pt;"); // set font size and type
 
-        circuitColumn.setCellValueFactory(new PropertyValueFactory<>("circuit"));
+        circuitColumn.setCellValueFactory(new PropertyValueFactory<>("circuit")); // set cell value factory
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        LocalDate currentDate = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate currentDate = LocalDate.now(); // get current date
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // format date
         String formattedDate = currentDate.format(formatter);
-        currentDateLabel.setText(formattedDate);
+        currentDateLabel.setText(formattedDate); // set current date label
 
         try {
-            File file = new File(PATH_TO_DETAILS);
+            File file = new File(PATH_TO_DETAILS); // create file
             Scanner scanner = new Scanner(file);
             List<Race> races = new ArrayList<>();
 
-            while (scanner.hasNextLine()) {
-                String[] line = scanner.nextLine().split(",");
-                String circuit = line[0];
-                LocalDate date = LocalDate.parse(line[1], DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-                races.add(new Race( circuit, date));
+            while (scanner.hasNextLine()) { // read file
+                String[] line = scanner.nextLine().split(","); // split line
+                String circuit = line[0]; // get circuit
+                LocalDate date = LocalDate.parse(line[1], DateTimeFormatter.ofPattern("dd-MM-yyyy")); // get date
+                races.add(new Race( circuit, date)); // add to list
             }
 
-            races.sort(Comparator.comparing(Race::getDate));
-            raceTable.getItems().addAll(races);
+            races.sort(Comparator.comparing(Race::getDate)); // sort by date
+            raceTable.getItems().addAll(races); // add to table
 
-        } catch (IOException e) {
+        } catch (IOException e) { // catch exception
             Platform.runLater(() -> {
                 Alert alert = new Alert(Alert.AlertType.ERROR,"No data found.", ButtonType.OK);
                 alert.setHeaderText(null);
@@ -71,7 +71,7 @@ public class ViewRaceTableController implements Initializable {
             });
         }
     }
-    public static class Race{
+    public static class Race{ // Race class
 
         private final String circuit;
         private final LocalDate date;

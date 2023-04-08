@@ -50,14 +50,14 @@ public class UpdateDriverDetailsController {
     private Label successUpdateText;
 
     @FXML
-    private boolean updateAllowed = false;
-    private int index;
+    private boolean updateAllowed = false; // boolean to check if update is allowed
+    private int index; // index of driver to update
     public void checkName() {
         for (ArrayList<Object> item : dataRepository) {
-            if (updateNameTextField.getText().toUpperCase().equals(item.get(0).toString())) {
-                index = dataRepository.indexOf(item);
+            if (updateNameTextField.getText().toUpperCase().equals(item.get(0).toString())) { // check if name exists
+                index = dataRepository.indexOf(item); // get index of driver to update
 
-                newDriverAgeText.setText(item.get(1).toString());
+                newDriverAgeText.setText(item.get(1).toString()); // set text fields to current driver details
                 newDriverTeamText.setText(item.get(2).toString());
                 newDriverCarText.setText(item.get(3).toString());
                 newDriverPointsText.setText(item.get(4).toString());
@@ -65,7 +65,7 @@ public class UpdateDriverDetailsController {
                 driverNameSearchLabel.setTextFill(javafx.scene.paint.Color.GREEN);
                 driverNameSearchLabel.setText("Driver found.");
 
-                updateAllowed = true;
+                updateAllowed = true; // allow update
 
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> driverNameSearchLabel.setText(null)));
                 timeline.play();
@@ -86,10 +86,11 @@ public class UpdateDriverDetailsController {
     }
 
     public void checkAgeIsNumber() {
-        try {
+        try { // check if age is a number
             Integer.parseInt(newDriverAgeText.getText());
             errorAgeLabel.setText(null);
-            if (Integer.parseInt(newDriverAgeText.getText()) < 15 || Integer.parseInt(newDriverAgeText.getText()) > 99 || newDriverAgeText.getText().isEmpty()) {
+            if (Integer.parseInt(newDriverAgeText.getText()) < 15
+                    || Integer.parseInt(newDriverAgeText.getText()) > 99 || newDriverAgeText.getText().isEmpty()) {
                 throw new NumberFormatException();
             }
 
@@ -99,7 +100,7 @@ public class UpdateDriverDetailsController {
     }
 
     public void checkPointsIsNumber() {
-        try {
+        try { // check if points is a number
             Integer.parseInt(newDriverPointsText.getText());
             errorPointsLabel.setText(null);
         } catch (NumberFormatException e) {
@@ -108,11 +109,12 @@ public class UpdateDriverDetailsController {
     }
 
     public void updateDriverDetails() {
-        if (updateAllowed){
+        if (updateAllowed){ // check if update is allowed
             try {
                 try {
                     Integer.parseInt(newDriverAgeText.getText());
-                    if (Integer.parseInt(newDriverAgeText.getText()) < 15 || Integer.parseInt(newDriverAgeText.getText()) > 99 || newDriverAgeText.getText().isEmpty()) {
+                    if (Integer.parseInt(newDriverAgeText.getText()) < 15
+                            || Integer.parseInt(newDriverAgeText.getText()) > 99 || newDriverAgeText.getText().isEmpty()) {
                         throw new NumberFormatException();
                     }
 
@@ -120,43 +122,51 @@ public class UpdateDriverDetailsController {
                     throw new NumberFormatException("Enter a valid age");
                 }
 
-                dataRepository.get(index).set(1, Integer.parseInt(newDriverAgeText.getText()));
-                dataRepository.get(index).set(2, newDriverTeamText.getText());
-                dataRepository.get(index).set(3, newDriverCarText.getText());
-
                 try {
                     Integer.parseInt(newDriverPointsText.getText());
                     errorPointsLabel.setText(null);
                 } catch (NumberFormatException e) {
                     throw new NumberFormatException("Points must be a integer");
                 }
-                dataRepository.get(index).set(4, Integer.parseInt(newDriverPointsText.getText()));
 
-                successUpdateText.setTextFill(javafx.scene.paint.Color.GREEN);
-                successUpdateText.setText("Driver details updated successfully");
-                driverNameSearchLabel.setText(null);
-                updateNameTextField.setText(null);
-                newDriverAgeText.clear();
-                newDriverTeamText.clear();
-                newDriverCarText.clear();
-                newDriverPointsText.clear();
+                updateDataRepository(index, Integer.parseInt(newDriverAgeText.getText()), newDriverTeamText.getText(),
+                        newDriverCarText.getText(), Integer.parseInt(newDriverPointsText.getText())); // update data repository
+
+                updateAllowed = false; // disallow update
 
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> successUpdateText.setText(null)));
                 timeline.play();
 
-            }catch (NumberFormatException e) {
+            }catch (NumberFormatException e) { // catch any errors
                 Window owner = updateButton.getScene().getWindow();
                 MainController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error",
-                        "Invalid input. "+e.getMessage());
+                        "Invalid input. "+e.getMessage()); // display error message
             }
-        }else {
+        }else { // if update is not allowed
             Window owner = updateButton.getScene().getWindow();
             MainController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error",
-                    "Driver not found. Please search again.");
+                    "Driver not found. Please search again."); // display error message
         }
     }
 
     public void switchToMenu(ActionEvent event) throws IOException {
         MainController.switchToMenu(event);
+    }
+
+    private void updateDataRepository(int index, int age, String team, String car, int points) { // method to update data repository
+        dataRepository.get(index).set(1, age);
+        dataRepository.get(index).set(2, team);
+        dataRepository.get(index).set(3, car);
+        dataRepository.get(index).set(4, points);
+
+        successUpdateText.setTextFill(javafx.scene.paint.Color.GREEN);
+        successUpdateText.setText("Driver details updated successfully");
+        driverNameSearchLabel.setText(null);
+        updateNameTextField.setText(null);
+        newDriverAgeText.clear();
+        newDriverTeamText.clear();
+        newDriverCarText.clear();
+        newDriverPointsText.clear();
+
     }
 }

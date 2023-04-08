@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddDriverDetailsController {
-    public static ArrayList<ArrayList<Object>> dataRepository = new ArrayList<>();
+    public static ArrayList<ArrayList<Object>> dataRepository = new ArrayList<>(); // create array list to store driver data
 
     @FXML
     private TextField nameTextField;
@@ -54,7 +54,8 @@ public class AddDriverDetailsController {
     public void checkName() {
         try {
             for (ArrayList<Object> item : dataRepository) {
-                if (nameTextField.getText().toUpperCase().equals(item.get(0).toString())) { // check if name already exists
+                if (nameTextField.getText().toUpperCase().equals(item.get(0).toString())) {
+                    // check if name already exists
                     throw new Exception(); // if name exists, throw exception
                 } else {
                     nameTextError.setText(null);
@@ -70,7 +71,8 @@ public class AddDriverDetailsController {
         try {
             Integer.parseInt(ageField.getText()); // check if age is an integer number
             ageTextError.setText(null);
-            if (Integer.parseInt(ageField.getText()) < 15 && Integer.parseInt(ageField.getText()) > 99) { // check if age is between 15 and 99
+            if (Integer.parseInt(ageField.getText()) < 15 && Integer.parseInt(ageField.getText()) > 99) {
+                // check if age is between 15 and 99
                 throw new NumberFormatException(); // if age is not between 15 and 99, throw exception
             }
         } catch (NumberFormatException e) { // if age is not an integer number, show error message
@@ -102,20 +104,15 @@ public class AddDriverDetailsController {
                     }
                 }
 
-                String name = nameTextField.getText().toUpperCase(); // get name from text field
-
                 try {
                     Integer.parseInt(ageField.getText());
-                    if (ageField.getText().isEmpty() || Integer.parseInt(ageField.getText()) < 15 || Integer.parseInt(ageField.getText()) > 99) {
+                    if (ageField.getText().isEmpty() || Integer.parseInt(ageField.getText()) < 15
+                            || Integer.parseInt(ageField.getText()) > 99) {
                         throw new NumberFormatException();
                     }
                 } catch (NumberFormatException e) {
                     throw new IllegalArgumentException("Enter a valid age.");
                 }
-
-                int age = Integer.parseInt(ageField.getText()); // get age from text field
-                String team = teamTextField.getText(); // get team from text field
-                String carModel = carTextField.getText(); // get car model from text field
 
                 try {
                     Integer.parseInt(pointsField.getText());
@@ -123,6 +120,10 @@ public class AddDriverDetailsController {
                     throw new IllegalArgumentException("Points must be a integer.");
                 }
 
+                String name = nameTextField.getText().toUpperCase(); // get name from text field
+                int age = Integer.parseInt(ageField.getText()); // get age from text field
+                String team = teamTextField.getText(); // get team from text field
+                String carModel = carTextField.getText(); // get car model from text field
                 int points = Integer.parseInt(pointsField.getText()); // get points from text field
 
                 addDriverDetails(name,age,team,carModel,points); // add driver details to data repository
@@ -150,7 +151,8 @@ public class AddDriverDetailsController {
         MainController.switchToMenu(event); // switch to menu
     }
 
-    private void addDriverDetails(String name, int age, String team, String carModel, int points) { // method to add driver details to data repository
+    public static void addDriverDetails(String name, int age, String team, String carModel, int points) {
+        // method to add driver details to data repository
          dataRepository.add(new ArrayList<>(List.of(name, age, team, carModel, points)));
     }
 

@@ -12,7 +12,7 @@ class LoadSavedDataTest {
 
     @Test
     @Order(1)
-    void loadDataIncorrectPath() {
+    void loadDataIncorrectPath() { // check if path is incorrect
         LoadSavedData loadSavedData = new LoadSavedData();
         String expected = "Error: File not found";
         String actual = loadSavedData.loadSavedData("incorrectPath");
@@ -21,7 +21,7 @@ class LoadSavedDataTest {
 
     @Test
     @Order(2)
-    void loadDataCorrectPath() {
+    void loadDataCorrectPath() { // check if path is correct
         LoadSavedData loadSavedData = new LoadSavedData();
         String expected = "Data loaded successfully.";
         String actual = loadSavedData.loadSavedData("src/Driver_details.txt");
@@ -30,7 +30,7 @@ class LoadSavedDataTest {
 
     @Test
     @Order(3)
-    void loadDataAlreadyLoaded() {
+    void loadDataAlreadyLoaded() { // check if data is already loaded
         LoadSavedData loadSavedData = new LoadSavedData();
         String expected = "Error: Data already loaded";
         String actual = loadSavedData.loadSavedData("src/Driver_details.txt");

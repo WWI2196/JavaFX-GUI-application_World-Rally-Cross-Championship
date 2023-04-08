@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class AddDriverDetailsTest {
     @BeforeAll
-    static void setUp() {
+    static void setUp() { // set up data repository
         ArrayList<Object> driver = new ArrayList<>();
         driver.add("LEWIS HAMILTON");
         driver.add(35);
@@ -24,7 +24,7 @@ class AddDriverDetailsTest {
 
     @Test
     @Order(1)
-    void checkNameIsNotEmpty() {
+    void checkNameIsNotEmpty() { // check if name is empty
         AddDriverDetails addDriverDetails = new AddDriverDetails();
         String expected = "Error: Name cannot be empty";
         String actual = addDriverDetails.checkNameIsNotEmpty("");
@@ -32,7 +32,7 @@ class AddDriverDetailsTest {
     }
     @Test
     @Order(2)
-    void checkExitingName() {
+    void checkExitingName() { // check if name exists
         AddDriverDetails addDriverDetails = new AddDriverDetails();
         String expected = "Error: Name already exists";
         String actual = addDriverDetails.checkName("LEWIS HAMILTON");
@@ -41,7 +41,7 @@ class AddDriverDetailsTest {
 
     @Test
     @Order(3)
-    void checkNewName() {
+    void checkNewName() { // check if name is new
         AddDriverDetails addDriverDetails = new AddDriverDetails();
         String expected = null;
         String actual = addDriverDetails.checkName("MAX VERSTAPPEN");
@@ -50,7 +50,7 @@ class AddDriverDetailsTest {
 
     @Test
     @Order(4)
-    void checkAgeIsNotNumber() {
+    void checkAgeIsNotNumber() { // check if age is not a number
         AddDriverDetails addDriverDetails = new AddDriverDetails();
         String expected = "Error: Age must be an integer";
         String actual = addDriverDetails.checkAgeIsNumber("abc");
@@ -59,7 +59,7 @@ class AddDriverDetailsTest {
 
     @Test
     @Order(5)
-    void checkAgeIsNumber() {
+    void checkAgeIsNumber() { // check if age is a number
         AddDriverDetails addDriverDetails = new AddDriverDetails();
         String expected = null;
         String actual = addDriverDetails.checkAgeIsNumber("21");
@@ -68,7 +68,7 @@ class AddDriverDetailsTest {
 
     @Test
     @Order(6)
-    void checkAgeIsHigher() {
+    void checkAgeIsHigher() { // check if age is between 15 and 99
         AddDriverDetails addDriverDetails = new AddDriverDetails();
         String expected = "Error: Enter a valid age";
         String actual = addDriverDetails.checkAgeIsBetween15And99("101");
@@ -86,7 +86,7 @@ class AddDriverDetailsTest {
 
     @Test
     @Order(8)
-    void checkPointsIsNotNumber() {
+    void checkPointsIsNotNumber() { // check if points is not a number
         AddDriverDetails addDriverDetails = new AddDriverDetails();
         String expected = "Error: Points must be an integer";
         String actual = addDriverDetails.checkPointsIsNumber("abc");
@@ -104,7 +104,7 @@ class AddDriverDetailsTest {
 
     @Test
     @Order(10)
-    void addDriverDetails() {
+    void addDriverDetails() { // check if driver details are added
         AddDriverDetails addDriverDetails = new AddDriverDetails();
         List<Object> expected = Arrays.asList("MAX VERSTAPPEN", 21, "RED BULL", "RB16B", 96);
         List<Object> actual = addDriverDetails.addDriverDetails("MAX VERSTAPPEN", "21", "RED BULL", "RB16B", "96");

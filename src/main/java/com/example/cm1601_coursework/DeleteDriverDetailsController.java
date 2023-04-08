@@ -46,23 +46,23 @@ public class DeleteDriverDetailsController {
 
     @FXML
 
-    private boolean deleteAllowed = false;
-    private int deleteIndex;
+    private boolean deleteAllowed = false; // boolean to check if delete is allowed
+    private int deleteIndex; // index of driver to delete
     public void checkName() {
         for (ArrayList<Object> item : dataRepository) {
             if (deleteNameTextField.getText().toUpperCase().equals(item.get(0).toString())) {
-                deleteIndex = dataRepository.indexOf(item);
+                deleteIndex = dataRepository.indexOf(item); // get index of driver to delete
 
                 errorDeleteText.setTextFill(javafx.scene.paint.Color.GREEN);
                 errorDeleteText.setText("Driver found");
 
-                nameLabel.setText(item.get(0).toString());
+                nameLabel.setText(item.get(0).toString()); // set labels to driver details
                 ageLabel.setText(item.get(1).toString());
                 teamLabel.setText(item.get(2).toString());
                 carLabel.setText(item.get(3).toString());
                 pointsLabel.setText(item.get(4).toString());
 
-                deleteAllowed = true;
+                deleteAllowed = true; // allow delete
 
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event01 -> errorDeleteText.setText(null)));
                 timeline.play();
@@ -71,7 +71,7 @@ public class DeleteDriverDetailsController {
 
             }else {
                 errorDeleteText.setTextFill(javafx.scene.paint.Color.RED);
-                errorDeleteText.setText("No data found.");
+                errorDeleteText.setText("No data found."); // if no data found, set labels to null
 
                 deleteAllowed = false;
 
@@ -83,9 +83,9 @@ public class DeleteDriverDetailsController {
 
     @FXML
     public void initiate(){
-        if (deleteAllowed) {
+        if (deleteAllowed) { // if delete is allowed, delete driver
             try {
-                dataRepository.remove(dataRepository.get(deleteIndex));
+                dataRepository.remove(dataRepository.get(deleteIndex)); // remove driver from dataRepository
 
                 successDeleteText.setTextFill(javafx.scene.paint.Color.GREEN);
                 successDeleteText.setText("Successfully deleted " + nameLabel.getText().toUpperCase());
@@ -106,7 +106,7 @@ public class DeleteDriverDetailsController {
 
             } catch (IllegalAccessError ignored) {
             }
-        }else {
+        }else { // if delete is not allowed, show error
             Window owner = deleteButton.getScene().getWindow();
             MainController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
                     "Driver not found. Please search again.");

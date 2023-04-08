@@ -18,45 +18,45 @@ public class AddDriverDetails {
         } catch (Exception e) { // if name exists, catch exception
             return "Error: Name already exists"; // if name exists, return error message
         }
-        return null;
+        return null; // if name does not exist, return null
     }
 
-    public String checkAgeIsNumber(String age) {
+    public String checkAgeIsNumber(String age) { // check if age is a number
         try {
             Integer.parseInt(age);
             return null;
-        } catch (Exception e) {
+        } catch (Exception e) { // if age is not a number, catch exception
             return "Error: Age must be an integer";
         }
     }
 
-    public String checkPointsIsNumber(String points) {
+    public String checkPointsIsNumber(String points) { // check if points is a number
         try {
             Integer.parseInt(points);
             return null;
-        } catch (Exception e) {
+        } catch (Exception e) { // if points is not a number, catch exception
             return "Error: Points must be an integer";
         }
     }
 
-    public String checkAgeIsBetween15And99(String age) {
+    public String checkAgeIsBetween15And99(String age) { // check if age is between 15 and 99
         try {
             Integer.parseInt(age);
             if (Integer.parseInt(age) < 15 || Integer.parseInt(age) > 99) {
-                throw new NumberFormatException();
+                throw new NumberFormatException(); // if age is not between 15 and 99, throw exception
             }return null;
 
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException e) { // if age is not between 15 and 99, catch exception
             return "Error: Enter a valid age";
         }
     }
 
-    public String checkNameIsNotEmpty(String name) {
+    public String checkNameIsNotEmpty(String name) { // check if name is not empty
         try {
             if (name.isEmpty()) {
-                throw new Exception();
+                throw new Exception(); // if name is empty, throw exception
             }return null;
-        } catch (Exception e) {
+        } catch (Exception e) { // if name is empty, catch exception
             return "Error: Name cannot be empty";
         }
     }
@@ -85,12 +85,12 @@ public class AddDriverDetails {
             driverDetails.add(team);
             driverDetails.add(model);
             driverDetails.add(Integer.parseInt(points));
-            data_Repository.add(driverDetails);
+            data_Repository.add(driverDetails); // add driver details to data repository
 
-            return driverDetails;
+            return driverDetails; // return driver details
 
         } catch (Exception e) {
-            return null;
+            return null; // if any of the above conditions are not met, return null
         }
     }
 

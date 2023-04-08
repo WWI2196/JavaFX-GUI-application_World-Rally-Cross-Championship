@@ -41,22 +41,22 @@ public class ViewStandingTableController implements Initializable {
     private TableView<sortedDriverData> standingTable;
 
     @FXML
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle) { // initialize method
         Platform.runLater(() -> {
-            if (dataRepository.size() < 1) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "No data found.", ButtonType.OK);
+            if (dataRepository.size() < 1) { // if no data is found
+                Alert alert = new Alert(Alert.AlertType.ERROR, "No data found.", ButtonType.OK); // show error message
                 alert.setHeaderText(null);
                 alert.initOwner(backToMenuButton.getScene().getWindow());
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.isPresent() && result.get() == ButtonType.OK) {
                     backToMenuButton.fire();
                 }
-            }else {
+            }else { // if data is found
                 try {
-                    ArrayList<ArrayList<Object>> dataRepository = AddDriverDetailsController.dataRepository;
+                    ArrayList<ArrayList<Object>> dataRepository = AddDriverDetailsController.dataRepository; // get data from dataRepository
                     ArrayList<ArrayList<Object>> sortedData = new ArrayList<>(dataRepository);
 
-                    sortedData.sort((o1, o2) -> {
+                    sortedData.sort((o1, o2) -> { // sort data
                         int points1 = (int) o1.get(4);
                         int points2 = (int) o2.get(4);
                         return Integer.compare(points2, points1);
@@ -64,7 +64,7 @@ public class ViewStandingTableController implements Initializable {
 
                     int rank = 1;
                     List<sortedDriverData> data = new ArrayList<>();
-                    for (ArrayList<Object> item : sortedData) {
+                    for (ArrayList<Object> item : sortedData) { // add data to table
                         int position = rank++;
                         String name = (String) item.get(0);
                         String team = (String) item.get(2);
@@ -75,19 +75,24 @@ public class ViewStandingTableController implements Initializable {
 
                     standingTable.setStyle("-fx-font-family: 'Arial';-fx-font-size: 13.5pt;");
 
-                    positionColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getPosition()).asObject());
-                    driverNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
-                    driverTeamColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTeam()));
-                    carModelColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCar()));
-                    pointsColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getPoints()).asObject());
+                    positionColumn.setCellValueFactory(cellData ->
+                            new SimpleIntegerProperty(cellData.getValue().getPosition()).asObject());
+                    driverNameColumn.setCellValueFactory(cellData ->
+                            new SimpleStringProperty(cellData.getValue().getName()));
+                    driverTeamColumn.setCellValueFactory(cellData ->
+                            new SimpleStringProperty(cellData.getValue().getTeam()));
+                    carModelColumn.setCellValueFactory(cellData ->
+                            new SimpleStringProperty(cellData.getValue().getCar()));
+                    pointsColumn.setCellValueFactory(cellData ->
+                            new SimpleIntegerProperty(cellData.getValue().getPoints()).asObject());
 
-                    standingTable.getItems().addAll(data);
+                    standingTable.getItems().addAll(data); // add data to table
                 } catch (Exception ignored) {
                 }
             }
         });
     }
-    private static class sortedDriverData {
+    private static class sortedDriverData { // class for sortedData
         private final SimpleIntegerProperty position;
         private final SimpleStringProperty name;
         private final SimpleStringProperty team;

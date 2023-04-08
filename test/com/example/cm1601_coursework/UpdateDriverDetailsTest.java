@@ -12,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class UpdateDriverDetailsTest {
-    @BeforeAll
-    static void setUp() {
+    @BeforeAll // run before all tests
+    static void setUp() { // set up data repository
         ArrayList<Object> driver1 = new ArrayList<>();
         driver1.add("ADRIEN FOURMAUX");
         driver1.add(26);
@@ -34,7 +34,7 @@ class UpdateDriverDetailsTest {
 
     @Test
     @Order(1)
-    void checkNonExistingName() {
+    void checkNonExistingName() { // check if name exists
         UpdateDriverDetails updateDriverDetails = new UpdateDriverDetails();
 
         List<Object> expected = Collections.singletonList("Not found");
@@ -54,7 +54,7 @@ class UpdateDriverDetailsTest {
 
     @Test
     @Order(3)
-    void checkUpdatedAgeNotNumber() {
+    void checkUpdatedAgeNotNumber() { // check if age is a number
         UpdateDriverDetails updateDriverDetails = new UpdateDriverDetails();
         String expected = "Error: Enter a valid age";
         String actual = updateDriverDetails.checkAgeIsNumber("abc");
@@ -72,7 +72,7 @@ class UpdateDriverDetailsTest {
 
     @Test
     @Order(5)
-    void checkUpdatedPointsIsNotNumber() {
+    void checkUpdatedPointsIsNotNumber() { // check if points is a number
         UpdateDriverDetails updateDriverDetails = new UpdateDriverDetails();
         String expected = "99";
         String actual = updateDriverDetails.checkPointsIsNumber("99");
@@ -90,7 +90,7 @@ class UpdateDriverDetailsTest {
 
     @Test
     @Order(7)
-    void updateDriverDetails() {
+    void updateDriverDetails() { // check whether driver details get updated
         UpdateDriverDetails updateDriverDetails = new UpdateDriverDetails();
         List<Object> expected = Arrays.asList("LEWIS HAMILTON", 35, "MERCEDES", "WX-12", 99);
         List<Object> actual = updateDriverDetails.updateDriverDetails("35", "MERCEDES", "WX-12", "99");

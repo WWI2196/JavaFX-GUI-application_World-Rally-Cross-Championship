@@ -23,87 +23,52 @@ public class MainController {
     private Scene scene;
 
     @FXML
-    public void switchToAddDriverDetails(ActionEvent event) throws IOException {
+    public void switchToAddDriverDetails(ActionEvent event) throws IOException { // switch to add driver details scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddDriverDetails.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
 
-        File file01 = new File("src/image03.jpg");
-        Image image01 = new Image(file01.toURI().toString());
-        ImageView imageView01 = new ImageView(image01);
-        imageView01.setFitHeight(750);
-        imageView01.setFitWidth(400);
-        imageView01.setLayoutX(0);
-        imageView01.setLayoutY(0);
-
-        if (root instanceof Pane) {
-            ((Pane) root).getChildren().add(imageView01);
-        }
+        loadTheImage("src/image03.jpg", root);
 
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToDeleteDriverDetails(ActionEvent event) throws IOException {
+
+
+    public void switchToDeleteDriverDetails(ActionEvent event) throws IOException { // switch to delete driver details scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("DeleteDriverDetails.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
 
-        File file01 = new File("src/image04.jpg");
-        Image image01 = new Image(file01.toURI().toString());
-        ImageView imageView01 = new ImageView(image01);
-        imageView01.setFitHeight(750);
-        imageView01.setFitWidth(400);
-        imageView01.setLayoutX(0);
-        imageView01.setLayoutY(0);
-
-        if (root instanceof Pane) {
-            ((Pane) root).getChildren().add(imageView01);
-        }
+        loadTheImage("src/image04.jpg", root);
 
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToLoadSavedData(ActionEvent event) throws IOException {
+
+    public void switchToLoadSavedData(ActionEvent event) throws IOException { // switch to load saved data scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoadSavedData.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
 
-        File file01 = new File("src/image07.jpg");
-        Image image01 = new Image(file01.toURI().toString());
-        ImageView imageView01 = new ImageView(image01);
-        imageView01.setFitHeight(750);
-        imageView01.setFitWidth(400);
-        imageView01.setLayoutX(0);
-        imageView01.setLayoutY(0);
-
-        if (root instanceof Pane) {
-            ((Pane) root).getChildren().add(imageView01);
-        }
+        loadTheImage("src/image07.jpg", root);
 
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToSaveCurrentData(ActionEvent event) throws IOException {
+
+    public void switchToSaveCurrentData(ActionEvent event) throws IOException { // switch to save current data scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SaveCurrentData.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
 
-        File file01 = new File("src/image06.jpg");
-        Image image01 = new Image(file01.toURI().toString());
-        ImageView imageView01 = new ImageView(image01);
-        imageView01.setFitHeight(750);
-        imageView01.setFitWidth(400);
-        imageView01.setLayoutX(0);
-        imageView01.setLayoutY(0);
-
-        if (root instanceof Pane) {
-            ((Pane) root).getChildren().add(imageView01);
-        }
+        loadTheImage("src/image06.jpg", root);
 
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToStimulateRandomRace(ActionEvent event) throws IOException {
+
+    public void switchToStimulateRandomRace(ActionEvent event) throws IOException { // to switch to Random race stimulator
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SimulateRandomRace.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -135,72 +100,60 @@ public class MainController {
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToUpdateDriverDetails(ActionEvent event) throws IOException {
+
+    public void switchToUpdateDriverDetails(ActionEvent event) throws IOException { // switch to update driver details scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("UpdateDriverDetails.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
 
-        File file01 = new File("src/image05.jpg");
-        Image image01 = new Image(file01.toURI().toString());
-        ImageView imageView01 = new ImageView(image01);
-        imageView01.setFitHeight(750);
-        imageView01.setFitWidth(400);
-        imageView01.setLayoutX(0);
-        imageView01.setLayoutY(0);
-
-        if (root instanceof Pane) {
-            ((Pane) root).getChildren().add(imageView01);
-        }
+        loadTheImage("src/image05.jpg", root);
 
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToViewRaceTable(ActionEvent event) throws IOException {
+
+    public void switchToViewRaceTable(ActionEvent event) throws IOException { // switch to view race table
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ViewRaceTable.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
 
-        File file01 = new File("src/image03.jpg");
-        Image image01 = new Image(file01.toURI().toString());
-        ImageView imageView01 = new ImageView(image01);
-        imageView01.setFitHeight(750);
-        imageView01.setFitWidth(400);
-        imageView01.setLayoutX(0);
-        imageView01.setLayoutY(0);
-
-        if (root instanceof Pane) {
-            ((Pane) root).getChildren().add(imageView01);
-        }
+        loadTheImage("src/image03.jpg", root);
 
         stage.setScene(scene);
         stage.show();
     }
-    public static void switchToMenu(ActionEvent event) throws IOException {
+
+    public static void switchToMenu(ActionEvent event) throws IOException { // switch to main menu
         Parent root = FXMLLoader.load(Objects.requireNonNull(MainController.class.getResource("MainMenu.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
 
-        File file01 = new File("src/image02.jpg");
-        Image image01 = new Image(file01.toURI().toString());
-        ImageView imageView01 = new ImageView(image01);
-        imageView01.setFitHeight(750);
-        imageView01.setFitWidth(400);
-        imageView01.setLayoutX(0);
-        imageView01.setLayoutY(0);
-
-        if (root instanceof Pane) {
-            ((Pane) root).getChildren().add(imageView01);
-        }
+        loadTheImage("src/image02.jpg", root);
 
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToViewStandingTable(ActionEvent event) throws IOException {
+
+    public void switchToViewStandingTable(ActionEvent event) throws IOException { // switch to view standing table
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ViewStandingTable.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private static void loadTheImage(String filename, Parent root){ // method to load the image
+        File file01 = new File(filename);
+        Image image01 = new Image(file01.toURI().toString());
+        ImageView imageView01 = new ImageView(image01);
+        imageView01.setFitHeight(750);
+        imageView01.setFitWidth(400);
+        imageView01.setLayoutX(0);
+        imageView01.setLayoutY(0);
+
+        if (root instanceof Pane) {
+            ((Pane) root).getChildren().add(imageView01);
+        }
     }
 
     public static class AlertHelper { // class to show alert messages
@@ -213,7 +166,8 @@ public class MainController {
             alert.show();
         }
     }
-    public void exitProgramme() {
+
+    public void exitProgramme() { // method to exit programme
         System.exit(0);
-    }
+    } // exit programme
 }

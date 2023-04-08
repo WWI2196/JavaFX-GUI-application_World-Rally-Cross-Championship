@@ -30,49 +30,31 @@ public class SaveCurrentDataController {
     @FXML
     private ProgressBar progressBar;
 
-
     @FXML
-    private boolean saveAllowed = false;
-    public void appendData() {
-        if(dataRepository.size() == 0) {
-            successLabel.setTextFill(javafx.scene.paint.Color.RED);
-            successLabel.setText("No data to append.");
+    private static final String FILE_PATH = "src/Driver_details.txt"; // file path to write to
+
+    public void appendData() { // append data to file
+        if(dataRepository.size() == 0) { // if no data to append
+            Window owner = appendButton.getScene().getWindow();
+            MainController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error",
+                    "No data to append."); // show error message
 
             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), ae -> successLabel.setText(null)));
             timeline.play();
         }else {
-            saveAllowed = true;
-        }
-
-        if (saveAllowed) {
             try {
-                FileWriter writer = new FileWriter(("src/Driver_details.txt"), true);
-                double progressStep = 1.0 / dataRepository.size();
-                double progress = 0.0;
-                PauseTransition pause = new PauseTransition(Duration.seconds(0.1));
+                writeToFile(true); // write data to file
 
-                for (ArrayList<Object> item : dataRepository) {
-                    String line = item.get(0) + "," + item.get(1) + "," + item.get(2) + "," + item.get(3) + "," + item.get(4) + "\n";
-                    writer.write(line);
-
-                    pause.playFromStart();
-                    progress += progressStep;
-                    double finalProgress = progress;
-                    pause.setOnFinished(e -> progressBar.setProgress(finalProgress));
-
-
-                }
                 successLabel.setTextFill(javafx.scene.paint.Color.GREEN);
-                successLabel.setText("Successfully appended data.");
-                writer.close();
+                successLabel.setText("Successfully appended data."); // show success message
 
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), ae -> {
                     successLabel.setText(null);
                     progressBar.setProgress(0.0);
-                }));
+                })); // reset success message and progress bar after 3 seconds
                 timeline.play();
 
-            } catch (IOException e) {
+            } catch (IOException e) { // catch any errors
                 Window owner = appendButton.getScene().getWindow();
                 MainController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
                         "Error in appending data.");
@@ -80,37 +62,15 @@ public class SaveCurrentDataController {
         }
     }
 
-    public void overwriteData() {
+    public void overwriteData() { // overwrite data in file
         if(dataRepository.size() == 0) {
-            successLabel.setTextFill(javafx.scene.paint.Color.RED);
-            successLabel.setText("No data to overwrite.");
+            Window owner = appendButton.getScene().getWindow();
+            MainController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error",
+                    "No data to overwrite.");
 
-            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), ae -> successLabel.setText("")));
-            timeline.play();
         }else {
-            saveAllowed = true;
-        }
-
-        if (saveAllowed) {
             try {
-                FileWriter writer = new FileWriter(("src/Driver_details.txt"), false);
-                double progressStep = 1.0 / dataRepository.size();
-                double progress = 0.0;
-                PauseTransition pause = new PauseTransition(Duration.seconds(0.1));
-
-                for (ArrayList<Object> item : dataRepository) {
-                    String line = item.get(0) + "," + item.get(1) + "," + item.get(2) + "," + item.get(3) + "," + item.get(4) + "\n";
-                    writer.write(line);
-
-                    pause.playFromStart();
-                    progress += progressStep;
-                    double finalProgress = progress;
-                    pause.setOnFinished(event  -> progressBar.setProgress(finalProgress));
-
-                }
-                successLabel.setTextFill(javafx.scene.paint.Color.GREEN);
-                successLabel.setText("Successfully overwrote data.");
-                writer.close();
+                writeToFile(false); // write data to file
 
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), ae -> {
                     successLabel.setText(null);
@@ -128,6 +88,25 @@ public class SaveCurrentDataController {
 
     public void switchToMenu(ActionEvent event) throws IOException {
         MainController.switchToMenu(event);
+    }
+
+    private void writeToFile(boolean mode) throws IOException {
+        FileWriter writer = new FileWriter((SaveCurrentDataController.FILE_PATH), mode); //open file in append or overwrite mode
+        double progressStep = 2.0 / dataRepository.size(); // calculate progress step
+        double progress = 0.0; // initialise progress
+        PauseTransition pause = new PauseTransition(Duration.seconds(0.1)); // set pause time to 0.1 seconds
+
+        for (ArrayList<Object> item : dataRepository) { // loop through data repository
+            String line = item.get(0) + "," + item.get(1) + "," + item.get(2) + "," + item.get(3) + "," + item.get(4) + "\n";
+            writer.write(line); // write line to file
+
+            pause.playFromStart();
+            progress += progressStep; // update progress
+            double finalProgress = progress;
+            pause.setOnFinished(event  -> progressBar.setProgress(finalProgress)); // update progress bar
+
+        }
+        writer.close();
     }
 
 }

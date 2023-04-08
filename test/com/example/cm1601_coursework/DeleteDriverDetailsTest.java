@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class DeleteDriverDetailsTest {
     @BeforeAll
-    static void setUp() {
+    static void setUp() { // set up data repository
         ArrayList<Object> driver1 = new ArrayList<>();
         driver1.add("OTT TANAK");
         driver1.add(31);
@@ -33,7 +33,7 @@ class DeleteDriverDetailsTest {
 
     @Test
     @Order(1)
-    void checkExistingName() {
+    void checkExistingName() { // check if name exists
         DeleteDriverDetails deleteDriverDetails = new DeleteDriverDetails();
 
         List<Object> expected = Arrays.asList("LEWIS HAMILTON", 35, "MERCEDES", "W11", 94);
@@ -53,7 +53,7 @@ class DeleteDriverDetailsTest {
 
     @Test
     @Order(3)
-    void deleteDriver() {
+    void deleteDriver() { // delete driver
         DeleteDriverDetails deleteDriverDetails = new DeleteDriverDetails();
 
         String expected = "Driver deleted";

@@ -9,28 +9,28 @@ import static com.example.cm1601_coursework.AddDriverDetails.data_Repository;
 public class UpdateDriverDetails {
     private static int index;
     public List<Object> checkName(String deleteName) {
-        for (ArrayList<Object>item : data_Repository) {
-            if (deleteName.toUpperCase().equals(item.get(0).toString())) {
-                index = data_Repository.indexOf(item);
+        for (ArrayList<Object>item : data_Repository) { // loop through array list
+            if (deleteName.toUpperCase().equals(item.get(0).toString())) { // check if name exists
+                index = data_Repository.indexOf(item); // get index of name
 
-                String name = item.get(0).toString();
-                Integer age = (Integer) item.get(1);
+                String name = item.get(0).toString(); // get name
+                Integer age = (Integer) item.get(1); // get age
                 String team = item.get(2).toString();
                 String model = item.get(3).toString();
                 Integer point = (Integer) item.get(4);
 
                 List<Object> driverInfo = new ArrayList<>();
-                driverInfo.add(name);
+                driverInfo.add(name); // add data to array list
                 driverInfo.add(age);
                 driverInfo.add(team);
                 driverInfo.add(model);
                 driverInfo.add(point);
 
-                return driverInfo;
+                return driverInfo; // return array list
 
             }
         }
-        return Collections.singletonList("Not found");
+        return Collections.singletonList("Not found"); // return not found if name does not exist
     }
 
     public String checkAgeIsNumber(String age) {
@@ -54,7 +54,7 @@ public class UpdateDriverDetails {
         }
     }
 
-    public List<Object> updateDriverDetails(String age, String team, String model, String points) {
+    public List<Object> updateDriverDetails(String age, String team, String model, String points) { // update driver details
         try {
             try {
                 Integer.parseInt(age);
@@ -75,9 +75,9 @@ public class UpdateDriverDetails {
             data_Repository.get(index).set(3, model);
             data_Repository.get(index).set(4, Integer.parseInt(points));
 
-            return data_Repository.get(index);
+            return data_Repository.get(index); // return updated data
 
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) { // if age or points is not an integer number, show error message
             return Collections.singletonList("Not updated");
         }
     }
