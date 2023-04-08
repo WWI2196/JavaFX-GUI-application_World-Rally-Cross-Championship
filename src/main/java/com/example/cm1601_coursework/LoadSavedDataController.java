@@ -2,6 +2,7 @@ package com.example.cm1601_coursework;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,11 +11,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Window;
 import javafx.util.Duration;
+import javafx.scene.control.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Scanner;
 
 import static com.example.cm1601_coursework.AddDriverDetailsController.dataRepository;
@@ -29,6 +32,9 @@ public class LoadSavedDataController implements Initializable {
 
     @FXML
     private Button loadSavedDataButton;
+
+    @FXML
+    private Button backToMenu;
 
     @FXML
     private static boolean loadDataTime = true;
@@ -73,9 +79,16 @@ public class LoadSavedDataController implements Initializable {
 
             }
         }else {
-            Window owner = loadSavedDataButton.getScene().getWindow();
-            AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "System Alert!",
-                    "To avoid data duplication, loading Driver details again is strictly prohibited.");
+            Platform.runLater(() -> {
+                Alert alert = new Alert(Alert.AlertType.ERROR,"To avoid data duplication, loading Driver details again is prohibited.", ButtonType.OK);
+                alert.setHeaderText(null);
+                alert.setTitle("System Alert");
+                alert.initOwner(backToMenu.getScene().getWindow());
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+                    backToMenu.fire();
+                }
+            });
         }
     }
 
@@ -92,7 +105,7 @@ public class LoadSavedDataController implements Initializable {
             scanner01.close();
         } catch (FileNotFoundException e) {
             Window owner = loadSavedDataButton.getScene().getWindow();
-            AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
+            MainController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
                     "No data to load.");
         }
     }

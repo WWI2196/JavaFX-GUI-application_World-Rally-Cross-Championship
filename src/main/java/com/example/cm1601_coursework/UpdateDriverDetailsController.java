@@ -146,12 +146,12 @@ public class UpdateDriverDetailsController {
 
             }catch (NumberFormatException e) {
                 Window owner = updateButton.getScene().getWindow();
-                AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error",
+                MainController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error",
                         "Invalid input. "+e.getMessage());
             }
         }else {
             Window owner = updateButton.getScene().getWindow();
-            AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error",
+            MainController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error",
                     "Driver not found. Please search again.");
         }
     }

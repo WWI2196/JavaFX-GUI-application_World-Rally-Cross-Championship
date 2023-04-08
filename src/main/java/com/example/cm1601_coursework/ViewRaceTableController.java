@@ -1,11 +1,10 @@
 package com.example.cm1601_coursework;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.File;
@@ -18,6 +17,9 @@ public class ViewRaceTableController implements Initializable {
 
     @FXML
     private Label currentDateLabel;
+
+    @FXML
+    private Button backToMenu;
 
     @FXML
     private TableColumn<Race, String> circuitColumn;
@@ -55,10 +57,19 @@ public class ViewRaceTableController implements Initializable {
             races.sort(Comparator.comparing(Race::getDate));
             raceTable.getItems().addAll(races);
 
-        } catch (IOException ignored) {
+        } catch (IOException e) {
+            Platform.runLater(() -> {
+                Alert alert = new Alert(Alert.AlertType.ERROR,"No data found.", ButtonType.OK);
+                alert.setHeaderText(null);
+                alert.initOwner(backToMenu.getScene().getWindow());
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+                    backToMenu.fire();
+                }
+            });
         }
     }
-    public static class Race{
+    private static class Race{
 
         private final String circuit;
         private final LocalDate date;

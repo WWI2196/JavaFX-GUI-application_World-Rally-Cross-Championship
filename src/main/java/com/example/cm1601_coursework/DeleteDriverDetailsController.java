@@ -108,7 +108,7 @@ public class DeleteDriverDetailsController {
             }
         }else {
             Window owner = deleteButton.getScene().getWindow();
-            AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
+            MainController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
                     "Driver not found. Please search again.");
         }
     }

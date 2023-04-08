@@ -14,6 +14,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AddDriverDetailsController {
     public static ArrayList<ArrayList<Object>> dataRepository = new ArrayList<>();
@@ -101,7 +102,7 @@ public class AddDriverDetailsController {
                     }
                 }
 
-                String name = nameTextField.getText(); // get name from text field
+                String name = nameTextField.getText().toUpperCase(); // get name from text field
 
                 try {
                     Integer.parseInt(ageField.getText());
@@ -124,13 +125,7 @@ public class AddDriverDetailsController {
 
                 int points = Integer.parseInt(pointsField.getText()); // get points from text field
 
-                ArrayList<Object> dataCompile = new ArrayList<>(); // create array list to store data
-                dataCompile.add(name.toUpperCase()); // add name to array list
-                dataCompile.add(age); // add age to array list
-                dataCompile.add(team); // add team to array list
-                dataCompile.add(carModel); // add car model to array list
-                dataCompile.add(points);   // add points to array list
-                dataRepository.add(new ArrayList<>(dataCompile)); // add array list to data repository
+                addDriverDetails(name,age,team,carModel,points); // add driver details to data repository
 
                 successText.setText("Driver details added successfully");
                 nameTextField.clear();
@@ -145,7 +140,7 @@ public class AddDriverDetailsController {
 
             } catch (IllegalArgumentException e) { // if the fields are empty or invalid, show error message
                 Window owner = submitButton.getScene().getWindow(); // get window
-                AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error",
+                MainController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error",
                         "Invalid input. "+e.getMessage());
             }
         });
@@ -155,15 +150,9 @@ public class AddDriverDetailsController {
         MainController.switchToMenu(event); // switch to menu
     }
 
-    public static class AlertHelper { // class to show alert messages
-        public static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
-            Alert alert = new Alert(alertType);
-            alert.setTitle(title);
-            alert.setHeaderText(null);
-            alert.setContentText(message);
-            alert.initOwner(owner);
-            alert.show();
-        }
+    private void addDriverDetails(String name, int age, String team, String carModel, int points) { // method to add driver details to data repository
+         dataRepository.add(new ArrayList<>(List.of(name, age, team, carModel, points)));
     }
+
 }
 

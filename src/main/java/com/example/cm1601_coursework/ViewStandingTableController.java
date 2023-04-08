@@ -87,7 +87,7 @@ public class ViewStandingTableController implements Initializable {
             }
         });
     }
-    public static class sortedDriverData {
+    private static class sortedDriverData {
         private final SimpleIntegerProperty position;
         private final SimpleStringProperty name;
         private final SimpleStringProperty team;

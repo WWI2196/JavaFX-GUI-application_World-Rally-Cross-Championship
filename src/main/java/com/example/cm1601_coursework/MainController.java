@@ -6,10 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.File;
 import java.io.IOException;
@@ -201,6 +203,16 @@ public class MainController {
         stage.show();
     }
 
+    public static class AlertHelper { // class to show alert messages
+        public static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
+            Alert alert = new Alert(alertType);
+            alert.setTitle(title);
+            alert.setHeaderText(null);
+            alert.setContentText(message);
+            alert.initOwner(owner);
+            alert.show();
+        }
+    }
     public void exitProgramme() {
         System.exit(0);
     }

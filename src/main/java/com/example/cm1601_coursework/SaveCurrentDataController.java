@@ -74,7 +74,7 @@ public class SaveCurrentDataController {
 
             } catch (IOException e) {
                 Window owner = appendButton.getScene().getWindow();
-                AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
+                MainController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
                         "Error in appending data.");
             }
         }
@@ -120,7 +120,7 @@ public class SaveCurrentDataController {
 
             } catch (IOException e) {
                 Window owner = overwriteButton.getScene().getWindow();
-                AddDriverDetailsController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
+                MainController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
                         "Error in overwriting data.");
             }
         }
