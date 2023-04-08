@@ -144,7 +144,7 @@ public class AddDriverDetailsController {
                 timeline.play();
 
             } catch (IllegalArgumentException e) { // if the fields are empty or invalid, show error message
-                Window owner = submitButton.getScene().getWindow();
+                Window owner = submitButton.getScene().getWindow(); // get window
                 AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error",
                         "Invalid input. "+e.getMessage());
             }
@@ -155,8 +155,7 @@ public class AddDriverDetailsController {
         MainController.switchToMenu(event); // switch to menu
     }
 
-    public static class AlertHelper {
-
+    public static class AlertHelper { // class to show alert messages
         public static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
             Alert alert = new Alert(alertType);
             alert.setTitle(title);
