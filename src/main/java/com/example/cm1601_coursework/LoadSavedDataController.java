@@ -39,6 +39,8 @@ public class LoadSavedDataController implements Initializable {
     @FXML
     private static boolean loadDataTime = true;
 
+    private static final String PATH = "src/Driver_details.txt";
+
     public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
         countNumberOfLines();
     }
@@ -46,7 +48,7 @@ public class LoadSavedDataController implements Initializable {
     public void loadSavedData() {
         if (loadDataTime) {
             try {
-                File file = new File("src/Driver_details.txt");
+                File file = new File(PATH);
                 Scanner scanner = new Scanner(file);
 
                 while (scanner.hasNextLine()) {
@@ -94,7 +96,7 @@ public class LoadSavedDataController implements Initializable {
 
     public void countNumberOfLines() {
         try {
-            File file = new File("src/Driver_details.txt");
+            File file = new File(PATH);
             Scanner scanner01 = new Scanner(file);
             int count = 0;
             while (scanner01.hasNextLine()) {

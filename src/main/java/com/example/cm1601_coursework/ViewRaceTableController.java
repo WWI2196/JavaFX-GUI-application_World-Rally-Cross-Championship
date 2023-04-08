@@ -30,6 +30,8 @@ public class ViewRaceTableController implements Initializable {
     @FXML
     private TableView<Race> raceTable;
 
+    private static final String PATH_TO_DETAILS = "src/Race_settings.txt";
+
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
         raceTable.setStyle("-fx-font-family: 'Arial';-fx-font-size: 14pt;");
@@ -43,7 +45,7 @@ public class ViewRaceTableController implements Initializable {
         currentDateLabel.setText(formattedDate);
 
         try {
-            File file = new File("src/Race_settings.txt");
+            File file = new File(PATH_TO_DETAILS);
             Scanner scanner = new Scanner(file);
             List<Race> races = new ArrayList<>();
 
@@ -69,7 +71,7 @@ public class ViewRaceTableController implements Initializable {
             });
         }
     }
-    private static class Race{
+    public static class Race{
 
         private final String circuit;
         private final LocalDate date;

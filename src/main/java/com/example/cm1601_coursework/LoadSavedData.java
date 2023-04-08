@@ -2,11 +2,7 @@ package com.example.cm1601_coursework;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 import static com.example.cm1601_coursework.AddDriverDetails.data_Repository;
@@ -30,16 +26,15 @@ public class LoadSavedData {
                     data_Repository.add(driverData);
                 }
                 scanner.close();
+                dataLoaded = false;
+
                 return "Data loaded successfully.";
 
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                return "Error: File not found";
             }
+        } else {
+            return "Error: Data already loaded";
         }
-        return path;
     }
-
-
-
-
 }
