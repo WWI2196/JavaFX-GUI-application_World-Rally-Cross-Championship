@@ -2,13 +2,8 @@ package com.example.cm1601_coursework;
 
 import org.junit.jupiter.api.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 import static com.example.cm1601_coursework.AddDriverDetails.data_Repository;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class UpdateDriverDetailsTest {
@@ -26,7 +21,7 @@ class UpdateDriverDetailsTest {
     void checkNonExistingName() { // check if name exists
         UpdateDriverDetails updateDriverDetails = new UpdateDriverDetails();
 
-        AddDriverDetails.driver_Details expected = (AddDriverDetails.driver_Details) Collections.singletonList("Not updated");
+        AddDriverDetails.driver_Details expected = null;
         AddDriverDetails.driver_Details actual = updateDriverDetails.checkName("OTT TANAK");
         assertEquals(expected, actual);
     }
@@ -36,9 +31,14 @@ class UpdateDriverDetailsTest {
     void checkExistingName() {
         UpdateDriverDetails updateDriverDetails = new UpdateDriverDetails();
 
-        AddDriverDetails.driver_Details expected = (AddDriverDetails.driver_Details) Arrays.asList("LEWIS HAMILTON", 35, "MERCEDES", "WRC-15", 94);
+        AddDriverDetails.driver_Details expected = new AddDriverDetails.driver_Details("LEWIS HAMILTON", 35, "MERCEDES", "WRC-15", 94);
         AddDriverDetails.driver_Details actual = updateDriverDetails.checkName("LEWIS HAMILTON");
-        assertEquals(expected, actual);
+
+        assertEquals(expected.getName(), actual.getName());
+        assertEquals(expected.getAge(), actual.getAge());
+        assertEquals(expected.getTeam(), actual.getTeam());
+        assertEquals(expected.getModel(), actual.getModel());
+        assertEquals(expected.getPoints(), actual.getPoints());
     }
 
     @Test
@@ -81,8 +81,12 @@ class UpdateDriverDetailsTest {
     @Order(7)
     void updateDriverDetails() { // check whether driver details get updated
         UpdateDriverDetails updateDriverDetails = new UpdateDriverDetails();
-        AddDriverDetails.driver_Details expected = (AddDriverDetails.driver_Details) Arrays.asList("LEWIS HAMILTON", 35, "MERCEDES", "WX-12", 99);
+        AddDriverDetails.driver_Details expected = new AddDriverDetails.driver_Details("LEWIS HAMILTON", 35, "MERCEDES", "WX-12", 99);
         AddDriverDetails.driver_Details actual = updateDriverDetails.updateDriverDetails("35", "MERCEDES", "WX-12", "99");
-        assertEquals(expected, actual);
+
+        assertEquals(expected.getAge(), actual.getAge());
+        assertEquals(expected.getTeam(), actual.getTeam());
+        assertEquals(expected.getModel(), actual.getModel());
+        assertEquals(expected.getPoints(), actual.getPoints());
     }
 }

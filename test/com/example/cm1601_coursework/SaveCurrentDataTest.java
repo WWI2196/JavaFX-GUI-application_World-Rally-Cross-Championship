@@ -6,10 +6,8 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 import static com.example.cm1601_coursework.AddDriverDetails.data_Repository;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class SaveCurrentDataTest {

@@ -2,8 +2,6 @@ package com.example.cm1601_coursework;
 
 import org.junit.jupiter.api.*;
 
-import java.util.Arrays;
-
 import static com.example.cm1601_coursework.AddDriverDetails.data_Repository;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -97,13 +95,13 @@ class AddDriverDetailsTest {
     @Test
     @Order(10)
     void addDriverDetails() { // check if driver details are added
-        AddDriverDetails addDriverDetails = new AddDriverDetails();
 
         AddDriverDetails.driver_Details expected = new AddDriverDetails.driver_Details("MAX VERSTAPPEN", 21, "Team Toyota", "Yaris 139", 94);
         AddDriverDetails.driver_Details actual = AddDriverDetails.addDriverDetails("MAX VERSTAPPEN", "21", "Team Toyota", "Yaris 139", "94");
 
         // Compare the properties of the expected and actual driver details using their getter methods
-        assertEquals(expected.getName(), actual.getName());
+        assert actual != null; // check if actual is not null
+        assertEquals(expected.getName(), actual.getName()); // check if name is correct
         assertEquals(expected.getAge(), actual.getAge());
         assertEquals(expected.getTeam(), actual.getTeam());
         assertEquals(expected.getModel(), actual.getModel());

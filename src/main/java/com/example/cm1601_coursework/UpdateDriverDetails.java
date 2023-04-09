@@ -21,7 +21,7 @@ public class UpdateDriverDetails {
 
             }
         }
-        return (AddDriverDetails.driver_Details) Collections.singletonList("Not found."); // return not found if name does not exist
+        return null; // return not found if name does not exist
     }
 
     public String checkAgeIsNumber(String age) {
