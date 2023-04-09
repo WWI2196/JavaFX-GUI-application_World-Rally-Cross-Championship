@@ -14,14 +14,12 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class AddDriverDetailsController {
-    public static ArrayList<ArrayList<Object>> dataRepository = new ArrayList<>(); // create array list to store driver data
+    public static ArrayList<DriverDetails> dataRepository = new ArrayList<>(); // create array list to store driver data
 
     @FXML
     private TextField nameTextField;
-
 
     @FXML
     private TextField ageField;
@@ -53,8 +51,8 @@ public class AddDriverDetailsController {
     @FXML
     public void checkName() {
         try {
-            for (ArrayList<Object> item : dataRepository) {
-                if (nameTextField.getText().toUpperCase().equals(item.get(0).toString())) {
+            for (DriverDetails item : dataRepository) {
+                if (nameTextField.getText().toUpperCase().equals(item.getName())) {
                     // check if name already exists
                     throw new Exception(); // if name exists, throw exception
                 } else {
@@ -98,8 +96,8 @@ public class AddDriverDetailsController {
                     throw new IllegalArgumentException("Name cannot be empty.");
                 }
 
-                for (ArrayList<Object> item : dataRepository) {
-                    if (nameTextField.getText().toUpperCase().equals(item.get(0).toString())) {
+                for (DriverDetails item : dataRepository) {
+                    if (nameTextField.getText().toUpperCase().equals(item.getName())) {
                         throw new IllegalArgumentException("Name already exists.");
                     }
                 }
@@ -126,7 +124,7 @@ public class AddDriverDetailsController {
                 String carModel = carTextField.getText(); // get car model from text field
                 int points = Integer.parseInt(pointsField.getText()); // get points from text field
 
-                addDriverDetails(name,age,team,carModel,points); // add driver details to data repository
+                dataRepository.add(new DriverDetails(name, age, team, carModel, points)); // add driver details to data repository
 
                 successText.setText("Driver details added successfully");
                 nameTextField.clear();
@@ -151,9 +149,61 @@ public class AddDriverDetailsController {
         MainController.switchToMenu(event); // switch to menu
     }
 
-    public static void addDriverDetails(String name, int age, String team, String carModel, int points) {
-        // method to add driver details to data repository
-         dataRepository.add(new ArrayList<>(List.of(name, age, team, carModel, points)));
+    public static class DriverDetails implements java.io.Serializable {
+        // class to store driver details
+        private String name; // name
+        private int age; // age
+        private String team; // team
+        private String carModel; // car model
+        private int points; // points
+
+        public DriverDetails(String name, int age, String team, String carModel, int points) {
+            this.name = name;
+            this.age = age;
+            this.team = team;
+            this.carModel = carModel;
+            this.points = points;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public String getTeam() {
+            return team;
+        }
+
+        public String getCarModel() {
+            return carModel;
+        }
+
+        public int getPoints() {
+            return points;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
+        }
+
+        public void setTeam(String team) {
+            this.team = team;
+        }
+
+        public void setCarModel(String carModel) {
+            this.carModel = carModel;
+        }
+
+        public void setPoints(int points) {
+            this.points = points;
+        }
     }
 
 }

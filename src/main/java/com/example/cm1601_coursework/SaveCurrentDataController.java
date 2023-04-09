@@ -14,7 +14,6 @@ import javafx.util.Duration;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import static com.example.cm1601_coursework.AddDriverDetailsController.dataRepository;
 public class SaveCurrentDataController {
@@ -96,8 +95,8 @@ public class SaveCurrentDataController {
         double progress = 0.0; // initialise progress
         PauseTransition pause = new PauseTransition(Duration.seconds(0.1)); // set pause time to 0.1 seconds
 
-        for (ArrayList<Object> item : dataRepository) { // loop through data repository
-            String line = item.get(0) + "," + item.get(1) + "," + item.get(2) + "," + item.get(3) + "," + item.get(4) + "\n";
+        for (AddDriverDetailsController.DriverDetails item : dataRepository) { // loop through data repository
+            String line = item.getName() + "," + item.getAge() + "," + item.getTeam() + "," + item.getCarModel() + "," + item.getPoints() + "\n";
             writer.write(line); // write line to file
 
             pause.playFromStart();

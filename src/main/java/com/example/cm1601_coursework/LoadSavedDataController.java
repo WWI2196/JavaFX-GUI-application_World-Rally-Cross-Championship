@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.util.Optional;
 import java.util.Scanner;
 
+import static com.example.cm1601_coursework.AddDriverDetailsController.dataRepository;
+
 public class LoadSavedDataController implements Initializable {
 
     @FXML
@@ -34,7 +36,7 @@ public class LoadSavedDataController implements Initializable {
     private Button backToMenu;
 
     @FXML
-    private static boolean loadDataTime = true;
+    private static boolean loadSavedData = true;
 
     private static final String PATH = "src/Driver_details.txt"; // path to file
 
@@ -43,7 +45,7 @@ public class LoadSavedDataController implements Initializable {
     }
 
     public void loadSavedData() {
-        if (loadDataTime) {
+        if (loadSavedData) {
             try {
                 File file = new File(PATH);
                 Scanner scanner = new Scanner(file);
@@ -51,14 +53,15 @@ public class LoadSavedDataController implements Initializable {
                 while (scanner.hasNextLine()) { // read data from file
                     String[] data = scanner.nextLine().split(","); // split data by comma
 
-                    AddDriverDetailsController.addDriverDetails(data[0],
-                            Integer.parseInt(data[1]), data[2], data[3], Integer.parseInt(data[4])); // add data to dataRepository
+                    dataRepository.add(new AddDriverDetailsController.DriverDetails(data[0],
+                            Integer.parseInt(data[1]), data[2], data[3], Integer.parseInt(data[4])));
+                     // add data to dataRepository
                 }
                 scanner.close();
 
                 successTextLabel.setTextFill(javafx.scene.paint.Color.GREEN);
                 successTextLabel.setText("Data loaded successfully.");
-                loadDataTime = false;
+                loadSavedData = false;
 
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), ae -> successTextLabel.setText(null)));
                 timeline.play(); // set timer to clear successTextLabel

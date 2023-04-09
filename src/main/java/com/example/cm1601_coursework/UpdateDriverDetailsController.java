@@ -13,7 +13,6 @@ import javafx.stage.Window;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import static com.example.cm1601_coursework.AddDriverDetailsController.dataRepository;
 
@@ -53,14 +52,14 @@ public class UpdateDriverDetailsController {
     private boolean updateAllowed = false; // boolean to check if update is allowed
     private int index; // index of driver to update
     public void checkName() {
-        for (ArrayList<Object> item : dataRepository) {
-            if (updateNameTextField.getText().toUpperCase().equals(item.get(0).toString())) { // check if name exists
+        for (AddDriverDetailsController.DriverDetails item : dataRepository) {
+            if (updateNameTextField.getText().toUpperCase().equals(item.getName())) { // check if name exists
                 index = dataRepository.indexOf(item); // get index of driver to update
 
-                newDriverAgeText.setText(item.get(1).toString()); // set text fields to current driver details
-                newDriverTeamText.setText(item.get(2).toString());
-                newDriverCarText.setText(item.get(3).toString());
-                newDriverPointsText.setText(item.get(4).toString());
+                newDriverAgeText.setText(String.valueOf(item.getAge())); // set text fields to current driver details
+                newDriverTeamText.setText(item.getTeam());
+                newDriverCarText.setText(item.getCarModel());
+                newDriverPointsText.setText(String.valueOf(item.getPoints()));
 
                 driverNameSearchLabel.setTextFill(javafx.scene.paint.Color.GREEN);
                 driverNameSearchLabel.setText("Driver found.");
@@ -154,10 +153,10 @@ public class UpdateDriverDetailsController {
     }
 
     private void updateDataRepository(int index, int age, String team, String car, int points) { // method to update data repository
-        dataRepository.get(index).set(1, age);
-        dataRepository.get(index).set(2, team);
-        dataRepository.get(index).set(3, car);
-        dataRepository.get(index).set(4, points);
+        dataRepository.get(index).setAge(age);
+        dataRepository.get(index).setTeam(team);
+        dataRepository.get(index).setCarModel(car);
+        dataRepository.get(index).setPoints(points);
 
         successUpdateText.setTextFill(javafx.scene.paint.Color.GREEN);
         successUpdateText.setText("Driver details updated successfully");

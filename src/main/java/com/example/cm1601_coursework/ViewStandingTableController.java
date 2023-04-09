@@ -53,23 +53,23 @@ public class ViewStandingTableController implements Initializable {
                 }
             }else { // if data is found
                 try {
-                    ArrayList<ArrayList<Object>> dataRepository = AddDriverDetailsController.dataRepository; // get data from dataRepository
-                    ArrayList<ArrayList<Object>> sortedData = new ArrayList<>(dataRepository);
+                    ArrayList<AddDriverDetailsController.DriverDetails> dataRepository = AddDriverDetailsController.dataRepository; // get data from dataRepository
+                    ArrayList<AddDriverDetailsController.DriverDetails> sortedData = new ArrayList<>(dataRepository);
 
                     sortedData.sort((o1, o2) -> { // sort data
-                        int points1 = (int) o1.get(4);
-                        int points2 = (int) o2.get(4);
+                        int points1 = o1.getPoints();
+                        int points2 = o2.getPoints();
                         return Integer.compare(points2, points1);
                     });
 
                     int rank = 1;
                     List<sortedDriverData> data = new ArrayList<>();
-                    for (ArrayList<Object> item : sortedData) { // add data to table
+                    for (AddDriverDetailsController.DriverDetails item : sortedData) { // add data to table
                         int position = rank++;
-                        String name = (String) item.get(0);
-                        String team = (String) item.get(2);
-                        String car = (String) item.get(3);
-                        int points = (int) item.get(4);
+                        String name = item.getName();
+                        String team = item.getTeam();
+                        String car = item.getCarModel();
+                        int points = item.getPoints();
                         data.add(new sortedDriverData(position, name, team, car, points));
                     }
 

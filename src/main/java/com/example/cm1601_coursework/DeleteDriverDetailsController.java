@@ -12,9 +12,8 @@ import javafx.stage.Window;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
-import static com.example.cm1601_coursework.AddDriverDetailsController.dataRepository; // import dataRepository from AddDriverDetailsController
+import static com.example.cm1601_coursework.AddDriverDetailsController.dataRepository;
 
 public class DeleteDriverDetailsController {
     @FXML
@@ -49,18 +48,18 @@ public class DeleteDriverDetailsController {
     private boolean deleteAllowed = false; // boolean to check if delete is allowed
     private int deleteIndex; // index of driver to delete
     public void checkName() {
-        for (ArrayList<Object> item : dataRepository) {
-            if (deleteNameTextField.getText().toUpperCase().equals(item.get(0).toString())) {
+        for (AddDriverDetailsController.DriverDetails item : dataRepository) {
+            if (deleteNameTextField.getText().toUpperCase().equals(item.getName())) {
                 deleteIndex = dataRepository.indexOf(item); // get index of driver to delete
 
                 errorDeleteText.setTextFill(javafx.scene.paint.Color.GREEN);
                 errorDeleteText.setText("Driver found");
 
-                nameLabel.setText(item.get(0).toString()); // set labels to driver details
-                ageLabel.setText(item.get(1).toString());
-                teamLabel.setText(item.get(2).toString());
-                carLabel.setText(item.get(3).toString());
-                pointsLabel.setText(item.get(4).toString());
+                nameLabel.setText(item.getName()); // set labels to driver details
+                ageLabel.setText(String.valueOf(item.getAge()));
+                teamLabel.setText(item.getTeam());
+                carLabel.setText(item.getCarModel());
+                pointsLabel.setText(String.valueOf(item.getPoints()));
 
                 deleteAllowed = true; // allow delete
 

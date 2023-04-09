@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
+import javafx.stage.Window;
 import org.apache.commons.lang3.SerializationUtils;
 
 import java.io.File;
@@ -131,49 +132,55 @@ public class SimulateRandomRaceController implements Initializable {
         new Thread(task).start();
     }
 
-    public void loadRaceDetails() throws IOException, InterruptedException { //method to load race details
-        File file01 = new File(RACE_LOCATIONS_FILE_PATH);
-        File file02 = new File(RACE_DATES_FILE_PATH);
+    public void loadRaceDetails() { //method to load race details
+        try{
+            File file01 = new File(RACE_LOCATIONS_FILE_PATH);
+            File file02 = new File(RACE_DATES_FILE_PATH);
 
-        List<String> lines = Files.readAllLines(file01.toPath());
-        String raceLocation = lines.get(new Random().nextInt(lines.size()));
+            List<String> lines = Files.readAllLines(file01.toPath());
+            String raceLocation = lines.get(new Random().nextInt(lines.size()));
 
-        List<String> lines2 = Files.readAllLines(file02.toPath());
-        String raceDate = lines2.get(new Random().nextInt(lines2.size()));
+            List<String> lines2 = Files.readAllLines(file02.toPath());
+            String raceDate = lines2.get(new Random().nextInt(lines2.size()));
 
-        Thread.sleep(1000);
-        raceLocationLabel.setText(raceLocation);
-        raceDateLabel.setText(raceDate);
+            Thread.sleep(1000);
+            raceLocationLabel.setText(raceLocation);
+            raceDateLabel.setText(raceDate);
+        } catch (IOException | InterruptedException e) {
+            Window owner = progressBar.getScene().getWindow();
+            MainController.AlertHelper.showAlert(Alert.AlertType.ERROR,owner,"Error","Race details could not be loaded.");
+        }
+
     }
 
     private void loadStimulatedRace() { // method for loading race
-        ArrayList<ArrayList<Object>> dataRepository = AddDriverDetailsController.dataRepository;
-        ArrayList<ArrayList<Object>> temporaryData = SerializationUtils.clone(dataRepository); // clone dataRepository
+        ArrayList<AddDriverDetailsController.DriverDetails> dataRepository = AddDriverDetailsController.dataRepository;
+        ArrayList<AddDriverDetailsController.DriverDetails> temporaryData = SerializationUtils.clone(dataRepository); // clone dataRepository
 
         Collections.shuffle(temporaryData); // shuffle temporaryData
         List<sortedStimulationDriverData> data = new ArrayList<>();
 
         Random random = new Random();
-        Set<Integer> chosenIndices = new HashSet<>(); // set to store chosen indices
+        Set<Integer> chosenIndexes = new HashSet<>(); // set to store chosen indices
         for (int mark = 0; mark < 3; mark++) { // loop to add points to drivers
             int randomIndex;
             do {
                 randomIndex = random.nextInt(temporaryData.size()); // generate random index
-            } while (chosenIndices.contains(randomIndex)); // if index is already chosen, generate new index
-            chosenIndices.add(randomIndex); // add index to chosenIndices
-            int fourth = (int) temporaryData.get(randomIndex).get(4); // get points of driver
-            temporaryData.get(randomIndex).set(4, fourth + POINTS[mark]); // add points to driver
+            } while (chosenIndexes.contains(randomIndex)); // if index is already chosen, generate new index
+            chosenIndexes.add(randomIndex); // add index to chosenIndexes
+            int fourth = temporaryData.get(randomIndex).getPoints(); // get points of driver
+            temporaryData.get(randomIndex).setPoints(fourth + POINTS[mark]); // add points to driver
         }
 
         temporaryData.sort((o1, o2) -> { // sort temporaryData
-            int points1 = (int) o1.get(4);
-            int points2 = (int) o2.get(4);
+            int points1 = o1.getPoints();
+            int points2 = o2.getPoints();
             return Integer.compare(points2, points1);
         });
         for (int count = 0; count < temporaryData.size(); count++) {
-            data.add(new sortedStimulationDriverData(count + 1, (String) temporaryData.get(count).get(0),
-                    (String) temporaryData.get(count).get(2), (String) temporaryData.get(count).get(3),
-                    (int) temporaryData.get(count).get(4))); // add data to table view
+            data.add(new sortedStimulationDriverData(count + 1, temporaryData.get(count).getName(),
+                    temporaryData.get(count).getTeam(), temporaryData.get(count).getCarModel(),
+                    temporaryData.get(count).getPoints())); // add data to table view
         }
         simulationStandingTable.setStyle("-fx-font-family: 'Arial';-fx-font-size: 10.5pt;");
 
