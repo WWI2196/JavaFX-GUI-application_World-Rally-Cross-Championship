@@ -42,7 +42,7 @@ public class SaveCurrentDataController {
             timeline.play();
         }else {
             try {
-                writeToFile(true); // write data to file
+                writeToFile(true); // write data to file in append mode
 
                 successLabel.setTextFill(javafx.scene.paint.Color.GREEN);
                 successLabel.setText("Successfully appended data."); // show success message
@@ -69,7 +69,7 @@ public class SaveCurrentDataController {
 
         }else {
             try {
-                writeToFile(false); // write data to file
+                writeToFile(false); // write data to file in overwrite mode
 
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), ae -> {
                     successLabel.setText(null);

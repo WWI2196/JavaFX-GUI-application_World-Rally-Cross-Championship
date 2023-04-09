@@ -30,12 +30,7 @@ class SaveCurrentDataTest {
     @Test
     @Order(2)
     public void addDataToAppendOrOverwrite() { // add data to data repository
-        data_Repository.add(new ArrayList<Object>());
-        data_Repository.get(0).add("LEWIS HAMILTON");
-        data_Repository.get(0).add(35);
-        data_Repository.get(0).add("MERCEDES");
-        data_Repository.get(0).add("MI11-EU");
-        data_Repository.get(0).add(93);
+        data_Repository.add(new AddDriverDetails.driver_Details("LEWIS HAMILTON", 35, "MERCEDES", "W11", 94));
     }
     @Test
     @Order(3)

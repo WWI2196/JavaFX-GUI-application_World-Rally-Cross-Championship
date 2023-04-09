@@ -14,21 +14,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class UpdateDriverDetailsTest {
     @BeforeAll // run before all tests
     static void setUp() { // set up data repository
-        ArrayList<Object> driver1 = new ArrayList<>();
-        driver1.add("ADRIEN FOURMAUX");
-        driver1.add(26);
-        driver1.add("Team M-Sport");
-        driver1.add("Fiesta WRC");
-        driver1.add(80);
-        data_Repository.add(driver1);
 
-        ArrayList<Object> driver2 = new ArrayList<>();
-        driver2.add("LEWIS HAMILTON");
-        driver2.add(35);
-        driver2.add("MERCEDES");
-        driver2.add("WRC-15");
-        driver2.add(94);
-        data_Repository.add(driver2);
+        data_Repository.add(new AddDriverDetails.driver_Details("ADRIEN FOURMAUX", 26, "Team M-Sport", "Fiesta WRC", 80));
+
+        data_Repository.add(new AddDriverDetails.driver_Details("LEWIS HAMILTON", 35, "MERCEDES", "WRC-15", 94));
 
     }
 
@@ -37,8 +26,8 @@ class UpdateDriverDetailsTest {
     void checkNonExistingName() { // check if name exists
         UpdateDriverDetails updateDriverDetails = new UpdateDriverDetails();
 
-        List<Object> expected = Collections.singletonList("Not found");
-        List<Object> actual = updateDriverDetails.checkName("OTT TANAK");
+        AddDriverDetails.driver_Details expected = (AddDriverDetails.driver_Details) Collections.singletonList("Not updated");
+        AddDriverDetails.driver_Details actual = updateDriverDetails.checkName("OTT TANAK");
         assertEquals(expected, actual);
     }
 
@@ -47,8 +36,8 @@ class UpdateDriverDetailsTest {
     void checkExistingName() {
         UpdateDriverDetails updateDriverDetails = new UpdateDriverDetails();
 
-        List<Object> expected = Arrays.asList("LEWIS HAMILTON", 35, "MERCEDES", "WRC-15", 94);
-        List<Object> actual = updateDriverDetails.checkName("LEWIS HAMILTON");
+        AddDriverDetails.driver_Details expected = (AddDriverDetails.driver_Details) Arrays.asList("LEWIS HAMILTON", 35, "MERCEDES", "WRC-15", 94);
+        AddDriverDetails.driver_Details actual = updateDriverDetails.checkName("LEWIS HAMILTON");
         assertEquals(expected, actual);
     }
 
@@ -92,8 +81,8 @@ class UpdateDriverDetailsTest {
     @Order(7)
     void updateDriverDetails() { // check whether driver details get updated
         UpdateDriverDetails updateDriverDetails = new UpdateDriverDetails();
-        List<Object> expected = Arrays.asList("LEWIS HAMILTON", 35, "MERCEDES", "WX-12", 99);
-        List<Object> actual = updateDriverDetails.updateDriverDetails("35", "MERCEDES", "WX-12", "99");
+        AddDriverDetails.driver_Details expected = (AddDriverDetails.driver_Details) Arrays.asList("LEWIS HAMILTON", 35, "MERCEDES", "WX-12", 99);
+        AddDriverDetails.driver_Details actual = updateDriverDetails.updateDriverDetails("35", "MERCEDES", "WX-12", "99");
         assertEquals(expected, actual);
     }
 }

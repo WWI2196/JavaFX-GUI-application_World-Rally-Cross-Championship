@@ -2,24 +2,16 @@ package com.example.cm1601_coursework;
 
 import org.junit.jupiter.api.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import static com.example.cm1601_coursework.AddDriverDetails.data_Repository;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class AddDriverDetailsTest {
     @BeforeAll
     static void setUp() { // set up data repository
-        ArrayList<Object> driver = new ArrayList<>();
-        driver.add("LEWIS HAMILTON");
-        driver.add(35);
-        driver.add("MERCEDES");
-        driver.add("W11");
-        driver.add(94);
-        data_Repository.add(driver);
+        data_Repository.add(new AddDriverDetails.driver_Details("LEWIS HAMILTON", 35, "MERCEDES", "W11", 96));
     }
 
     @Test
@@ -95,7 +87,7 @@ class AddDriverDetailsTest {
 
     @Test
     @Order(9)
-    void checkPointsIsNumber() {
+    void checkPointsIsNumber() { // check if points is a number
         AddDriverDetails addDriverDetails = new AddDriverDetails();
         String expected = null;
         String actual = addDriverDetails.checkPointsIsNumber("96");
@@ -106,9 +98,16 @@ class AddDriverDetailsTest {
     @Order(10)
     void addDriverDetails() { // check if driver details are added
         AddDriverDetails addDriverDetails = new AddDriverDetails();
-        List<Object> expected = Arrays.asList("MAX VERSTAPPEN", 21, "RED BULL", "RB16B", 96);
-        List<Object> actual = addDriverDetails.addDriverDetails("MAX VERSTAPPEN", "21", "RED BULL", "RB16B", "96");
-        assertEquals(expected, actual);
+
+        AddDriverDetails.driver_Details expected = new AddDriverDetails.driver_Details("MAX VERSTAPPEN", 21, "Team Toyota", "Yaris 139", 94);
+        AddDriverDetails.driver_Details actual = AddDriverDetails.addDriverDetails("MAX VERSTAPPEN", "21", "Team Toyota", "Yaris 139", "94");
+
+        // Compare the properties of the expected and actual driver details using their getter methods
+        assertEquals(expected.getName(), actual.getName());
+        assertEquals(expected.getAge(), actual.getAge());
+        assertEquals(expected.getTeam(), actual.getTeam());
+        assertEquals(expected.getModel(), actual.getModel());
+        assertEquals(expected.getPoints(), actual.getPoints());
     }
 
 

@@ -61,18 +61,17 @@ public class ViewRaceTableController implements Initializable {
 
         } catch (IOException e) { // catch exception
             Platform.runLater(() -> {
-                Alert alert = new Alert(Alert.AlertType.ERROR,"No data found.", ButtonType.OK);
+                Alert alert = new Alert(Alert.AlertType.ERROR,"No data found.", ButtonType.OK); // show error message
                 alert.setHeaderText(null);
                 alert.initOwner(backToMenu.getScene().getWindow());
                 Optional<ButtonType> result = alert.showAndWait();
-                if (result.isPresent() && result.get() == ButtonType.OK) {
-                    backToMenu.fire();
+                if (result.isPresent() && result.get() == ButtonType.OK) { // if ok is pressed
+                    backToMenu.fire(); // go back to menu
                 }
             });
         }
     }
     public static class Race{ // Race class
-
         private final String circuit;
         private final LocalDate date;
 

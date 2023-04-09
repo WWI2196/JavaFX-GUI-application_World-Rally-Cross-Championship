@@ -1,7 +1,6 @@
 package com.example.cm1601_coursework;
 
 import java.io.FileWriter;
-import java.util.ArrayList;
 
 import static com.example.cm1601_coursework.AddDriverDetails.data_Repository;
 public class SaveCurrentData {
@@ -11,9 +10,9 @@ public class SaveCurrentData {
         }else {
             try {
                 FileWriter writer = new FileWriter((FILE), true); // create file writer
-                for (ArrayList<Object> item : data_Repository) {
-                    String line = item.get(0) + "," + item.get(1) + ","
-                            + item.get(2) + "," + item.get(3) + "," + item.get(4) + "\n";
+                for (AddDriverDetails.driver_Details item : data_Repository) {
+                    String line = item.getName() + "," + item.getAge() + ","
+                            + item.getTeam() + "," + item.getModel() + "," + item.getPoints() + "\n";
                     writer.write(line); // write data to file
                 }
                 writer.close();
@@ -30,8 +29,8 @@ public class SaveCurrentData {
         }else {
             try {
                 FileWriter writer = new FileWriter((FILE), false); // create file writer
-                for (ArrayList<Object> item : data_Repository) {
-                    String line = item.get(0) + "," + item.get(1) + "," + item.get(2) + "," + item.get(3) + "," + item.get(4) + "\n";
+                for (AddDriverDetails.driver_Details item : data_Repository) {
+                    String line = item.getName() + "," + item.getAge() + "," + item.getTeam() + "," + item.getModel() + "," + item.getPoints() + "\n";
                     writer.write(line);
                 }
                 writer.close();

@@ -1,6 +1,5 @@
 package com.example.cm1601_coursework;
 
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -49,7 +48,7 @@ public class AddDriverDetailsController {
     @FXML
     private Label pointTextError;
     @FXML
-    public void checkName() {
+    public void checkName() { // method to check if name already exists
         try {
             for (DriverDetails item : dataRepository) {
                 if (nameTextField.getText().toUpperCase().equals(item.getName())) {
@@ -65,7 +64,7 @@ public class AddDriverDetailsController {
     }
 
     @FXML
-    public void checkAgeIsNumber() {
+    public void checkAgeIsNumber() { // method to check if age is an integer number
         try {
             Integer.parseInt(ageField.getText()); // check if age is an integer number
             ageTextError.setText(null);
@@ -79,7 +78,7 @@ public class AddDriverDetailsController {
     }
 
     @FXML
-    public void checkPointsIsNumber() {
+    public void checkPointsIsNumber() { // method to check if points is an integer number
         try {
             Integer.parseInt(pointsField.getText());// check if points is an integer number
             pointTextError.setText(null);
@@ -92,11 +91,11 @@ public class AddDriverDetailsController {
     public void initialize() {
         submitButton.setOnAction(event -> {// when submit button is clicked
             try {
-                if (nameTextField.getText().isEmpty()) {
-                    throw new IllegalArgumentException("Name cannot be empty.");
+                if (nameTextField.getText().isEmpty()) { // check if name field is empty
+                    throw new IllegalArgumentException("Name cannot be empty."); // if name field is empty, throw exception
                 }
 
-                for (DriverDetails item : dataRepository) {
+                for (DriverDetails item : dataRepository) { // check if name already exists
                     if (nameTextField.getText().toUpperCase().equals(item.getName())) {
                         throw new IllegalArgumentException("Name already exists.");
                     }
@@ -105,7 +104,7 @@ public class AddDriverDetailsController {
                 try {
                     Integer.parseInt(ageField.getText());
                     if (ageField.getText().isEmpty() || Integer.parseInt(ageField.getText()) < 15
-                            || Integer.parseInt(ageField.getText()) > 99) {
+                            || Integer.parseInt(ageField.getText()) > 99) { // check if age is between 15 and 99
                         throw new NumberFormatException();
                     }
                 } catch (NumberFormatException e) {
@@ -114,7 +113,7 @@ public class AddDriverDetailsController {
 
                 try {
                     Integer.parseInt(pointsField.getText());
-                } catch (NumberFormatException e) {
+                } catch (NumberFormatException e) { // check if points is an integer number
                     throw new IllegalArgumentException("Points must be a integer.");
                 }
 

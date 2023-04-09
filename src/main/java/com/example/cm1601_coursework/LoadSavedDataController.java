@@ -100,7 +100,7 @@ public class LoadSavedDataController implements Initializable {
                 scanner01.nextLine();  // read next line
                 count++; // increment count
             }
-            numberOfDriversLabel.setText(String.valueOf(count));
+            numberOfDriversLabel.setText(String.valueOf(count)); // set numberOfDriversLabel to count
             scanner01.close();
         } catch (FileNotFoundException e) {
             Window owner = loadSavedDataButton.getScene().getWindow();

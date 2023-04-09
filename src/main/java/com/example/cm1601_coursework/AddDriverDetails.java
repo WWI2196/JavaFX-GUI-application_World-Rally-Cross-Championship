@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddDriverDetails {
-    public static ArrayList<ArrayList<Object>> data_Repository = new ArrayList<>();
+    public static ArrayList<driver_Details> data_Repository = new ArrayList<>();
 
     public String checkName(String name) {
         try {
-            for (ArrayList<Object> item : data_Repository) {
-                if (name.toUpperCase().equals(item.get(0).toString())) { // check if name already exists
+            for ( driver_Details item : data_Repository) {
+                if (name.toUpperCase().equals(item.getName())) { // check if name already exists
                     throw new Exception(); // if name exists, throw exception
                 } else {
                     return null; // if name does not exist, return null
@@ -61,13 +61,13 @@ public class AddDriverDetails {
         }
     }
 
-    public List<Object> addDriverDetails(String name, String age,String team,String model, String points) {
+    public static driver_Details addDriverDetails(String name, String age, String team, String model, String points) {
         try {
             if (name.isEmpty()) {
                 throw new Exception();
             }
-            for (ArrayList<Object> item : data_Repository) {
-                if (name.toUpperCase().equals(item.get(0).toString())) {
+            for (driver_Details item : data_Repository) {
+                if (name.toUpperCase().equals(item.getName())) {
                     throw new Exception();
                 }
             }
@@ -79,18 +79,71 @@ public class AddDriverDetails {
             }
 
 
-            ArrayList<Object> driverDetails = new ArrayList<>();
-            driverDetails.add(name);
-            driverDetails.add(Integer.parseInt(age));
-            driverDetails.add(team);
-            driverDetails.add(model);
-            driverDetails.add(Integer.parseInt(points));
-            data_Repository.add(driverDetails); // add driver details to data repository
 
-            return driverDetails; // return driver details
+            driver_Details newDriver = new driver_Details(name, Integer.parseInt(age), team, model, Integer.parseInt(points));
+            data_Repository.add(newDriver);
+            return newDriver;// add new driver to data repository
+
+             // return driver details
 
         } catch (Exception e) {
             return null; // if any of the above conditions are not met, return null
+        }
+    }
+
+    public static class driver_Details {
+        private String name;
+        private int age;
+        private String team;
+        private String model;
+        private int points;
+
+        public driver_Details(String name, int age, String team, String model, int points) {
+            this.name = name;
+            this.age = age;
+            this.team = team;
+            this.model = model;
+            this.points = points;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
+        }
+
+        public String getTeam() {
+            return team;
+        }
+
+        public void setTeam(String team) {
+            this.team = team;
+        }
+
+        public String getModel() {
+            return model;
+        }
+
+        public void setModel(String model) {
+            this.model = model;
+        }
+
+        public int getPoints() {
+            return points;
+        }
+
+        public void setPoints(int points) {
+            this.points = points;
         }
     }
 

@@ -23,7 +23,7 @@ public class ViewStandingTableController implements Initializable {
     private Button backToMenuButton;
 
     @FXML
-    private TableColumn<sortedDriverData, String> carModelColumn;
+    private TableColumn<sortedDriverData, String> carModelColumn; // table columns
 
     @FXML
     private TableColumn<sortedDriverData, String> driverNameColumn;
@@ -38,7 +38,7 @@ public class ViewStandingTableController implements Initializable {
     private TableColumn<sortedDriverData, Integer> positionColumn;
 
     @FXML
-    private TableView<sortedDriverData> standingTable;
+    private TableView<sortedDriverData> standingTable; // table view
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) { // initialize method
@@ -48,35 +48,35 @@ public class ViewStandingTableController implements Initializable {
                 alert.setHeaderText(null);
                 alert.initOwner(backToMenuButton.getScene().getWindow());
                 Optional<ButtonType> result = alert.showAndWait();
-                if (result.isPresent() && result.get() == ButtonType.OK) {
-                    backToMenuButton.fire();
+                if (result.isPresent() && result.get() == ButtonType.OK) { // if ok is pressed
+                    backToMenuButton.fire(); // go back to menu
                 }
             }else { // if data is found
                 try {
                     ArrayList<AddDriverDetailsController.DriverDetails> dataRepository = AddDriverDetailsController.dataRepository; // get data from dataRepository
-                    ArrayList<AddDriverDetailsController.DriverDetails> sortedData = new ArrayList<>(dataRepository);
+                    ArrayList<AddDriverDetailsController.DriverDetails> sortedData = new ArrayList<>(dataRepository); // copy dataRepository to sortedData
 
                     sortedData.sort((o1, o2) -> { // sort data
                         int points1 = o1.getPoints();
                         int points2 = o2.getPoints();
-                        return Integer.compare(points2, points1);
+                        return Integer.compare(points2, points1); // sort by points
                     });
 
                     int rank = 1;
-                    List<sortedDriverData> data = new ArrayList<>();
-                    for (AddDriverDetailsController.DriverDetails item : sortedData) { // add data to table
-                        int position = rank++;
-                        String name = item.getName();
+                    List<sortedDriverData> data = new ArrayList<>(); // create new list of sortedData
+                    for (AddDriverDetailsController.DriverDetails item : sortedData) {
+                        int position = rank++; // set position
+                        String name = item.getName(); // get data from dataRepository
                         String team = item.getTeam();
                         String car = item.getCarModel();
                         int points = item.getPoints();
-                        data.add(new sortedDriverData(position, name, team, car, points));
+                        data.add(new sortedDriverData(position, name, team, car, points)); // add data to sortedData
                     }
 
                     standingTable.setStyle("-fx-font-family: 'Arial';-fx-font-size: 13.5pt;");
 
                     positionColumn.setCellValueFactory(cellData ->
-                            new SimpleIntegerProperty(cellData.getValue().getPosition()).asObject());
+                            new SimpleIntegerProperty(cellData.getValue().getPosition()).asObject()); // set cell values
                     driverNameColumn.setCellValueFactory(cellData ->
                             new SimpleStringProperty(cellData.getValue().getName()));
                     driverTeamColumn.setCellValueFactory(cellData ->
@@ -99,7 +99,7 @@ public class ViewStandingTableController implements Initializable {
         private final SimpleStringProperty car;
         private final SimpleIntegerProperty points;
 
-        public sortedDriverData(int position, String name, String team, String car, int points) {
+        public sortedDriverData(int position, String name, String team, String car, int points) { // constructor
             this.position = new SimpleIntegerProperty(position);
             this.name = new SimpleStringProperty(name);
             this.team = new SimpleStringProperty(team);

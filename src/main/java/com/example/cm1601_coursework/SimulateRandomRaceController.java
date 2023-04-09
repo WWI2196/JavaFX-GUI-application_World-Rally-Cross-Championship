@@ -18,7 +18,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.util.*;
 
-import static com.example.cm1601_coursework.AddDriverDetailsController.dataRepository;
+import static com.example.cm1601_coursework.AddDriverDetailsController.dataRepository; // import dataRepository
 
 public class SimulateRandomRaceController implements Initializable {
 
@@ -60,24 +60,24 @@ public class SimulateRandomRaceController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> {
             if (dataRepository.size() < 3) { // if there are less than 3 drivers in the dataRepository
-                Alert alert = new Alert(Alert.AlertType.ERROR, "A minimum of three players are required to stimulate a race.", ButtonType.OK);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "A minimum of three players are required to stimulate a race.", ButtonType.OK); // show error message
                 alert.setHeaderText(null);
                 alert.initOwner(progressBar.getScene().getWindow());
                 Optional<ButtonType> result = alert.showAndWait();
-                if (result.isPresent() && result.get() == ButtonType.OK) {
-                    backToMenuButton.fire();
+                if (result.isPresent() && result.get() == ButtonType.OK) { // if ok is pressed
+                    backToMenuButton.fire(); // go back to menu
                 }
             } else { // if there are more than 3 drivers in the dataRepository
                 try {
-                    loadRaceDetails();
-                    setProgressBar();
+                    loadRaceDetails(); // call method for loading race details
+                    setProgressBar(); // call method to set progress bar
                 } catch (Exception ignored) {
                 }
             }
         });
     }
 
-    private static class sortedStimulationDriverData { // class to store data for table view
+    private static class sortedStimulationDriverData { // class to store sorted data for table view
         private final SimpleIntegerProperty position; // properties for table view
         private final SimpleStringProperty name;
         private final SimpleStringProperty team;
@@ -94,7 +94,7 @@ public class SimulateRandomRaceController implements Initializable {
 
         public int getStimulationPosition() {
             return position.get();
-        } // getters for table view
+        } // getters
 
         public String getStimulationName() {
             return name.get();
@@ -114,18 +114,18 @@ public class SimulateRandomRaceController implements Initializable {
     }
 
     public void setProgressBar() { // method to set progress bar
-        progressBar.setProgress(0);
+        progressBar.setProgress(0); // set progress bar to 0
         Task<Void> task = new Task<>() {
             @Override
             protected Void call() throws Exception {
                 for (int i = 0; i < 100; i++) {
-                    Thread.sleep(100);
-                    updateProgress(i + 1, 100);
+                    Thread.sleep(100); // sleep for 100ms
+                    updateProgress(i + 1, 100); // update progress bar
                 }
                 return null;
             }
         };
-        task.setOnSucceeded(event -> loadStimulatedRace());
+        task.setOnSucceeded(event -> loadStimulatedRace()); // on completion of progress bar load the race
 
         progressBar.progressProperty().unbind();
         progressBar.progressProperty().bind(task.progressProperty());
@@ -137,18 +137,18 @@ public class SimulateRandomRaceController implements Initializable {
             File file01 = new File(RACE_LOCATIONS_FILE_PATH);
             File file02 = new File(RACE_DATES_FILE_PATH);
 
-            List<String> lines = Files.readAllLines(file01.toPath());
-            String raceLocation = lines.get(new Random().nextInt(lines.size()));
+            List<String> lines = Files.readAllLines(file01.toPath()); // read lines from file
+            String raceLocation = lines.get(new Random().nextInt(lines.size())); // get random line from file
 
             List<String> lines2 = Files.readAllLines(file02.toPath());
             String raceDate = lines2.get(new Random().nextInt(lines2.size()));
 
             Thread.sleep(1000);
-            raceLocationLabel.setText(raceLocation);
+            raceLocationLabel.setText(raceLocation); // set text for labels
             raceDateLabel.setText(raceDate);
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException | InterruptedException e) { // catch exceptions
             Window owner = progressBar.getScene().getWindow();
-            MainController.AlertHelper.showAlert(Alert.AlertType.ERROR,owner,"Error","Race details could not be loaded.");
+            MainController.AlertHelper.showAlert(Alert.AlertType.ERROR,owner,"Error","Race details could not be loaded."); // show error message
         }
 
     }
@@ -158,10 +158,10 @@ public class SimulateRandomRaceController implements Initializable {
         ArrayList<AddDriverDetailsController.DriverDetails> temporaryData = SerializationUtils.clone(dataRepository); // clone dataRepository
 
         Collections.shuffle(temporaryData); // shuffle temporaryData
-        List<sortedStimulationDriverData> data = new ArrayList<>();
+        List<sortedStimulationDriverData> data = new ArrayList<>(); // list to store data for table view
 
         Random random = new Random();
-        Set<Integer> chosenIndexes = new HashSet<>(); // set to store chosen indices
+        Set<Integer> chosenIndexes = new HashSet<>(); // set to store chosen indexes
         for (int mark = 0; mark < 3; mark++) { // loop to add points to drivers
             int randomIndex;
             do {
@@ -177,10 +177,10 @@ public class SimulateRandomRaceController implements Initializable {
             int points2 = o2.getPoints();
             return Integer.compare(points2, points1);
         });
-        for (int count = 0; count < temporaryData.size(); count++) {
+        for (int count = 0; count < temporaryData.size(); count++) { // loop to add data to data list
             data.add(new sortedStimulationDriverData(count + 1, temporaryData.get(count).getName(),
                     temporaryData.get(count).getTeam(), temporaryData.get(count).getCarModel(),
-                    temporaryData.get(count).getPoints())); // add data to table view
+                    temporaryData.get(count).getPoints()));
         }
         simulationStandingTable.setStyle("-fx-font-family: 'Arial';-fx-font-size: 10.5pt;");
 
