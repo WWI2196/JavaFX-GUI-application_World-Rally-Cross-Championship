@@ -72,8 +72,8 @@ public class AddDriverDetailsController {
                 // check if age is between 15 and 99
                 throw new NumberFormatException(); // if age is not between 15 and 99, throw exception
             }
-        } catch (NumberFormatException e) { // if age is not an integer number, show error message
-            ageTextError.setText("Error: Enter a valid age");
+        } catch (NumberFormatException e) { //catch exception
+            ageTextError.setText("Error: Enter a valid age"); // if age is not between 15 and 99, show error message
         }
     }
 

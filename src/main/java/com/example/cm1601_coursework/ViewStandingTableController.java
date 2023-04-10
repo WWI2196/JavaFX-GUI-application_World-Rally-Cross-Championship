@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.Window;
 
 import java.io.IOException;
 import java.net.URL;
@@ -87,7 +88,10 @@ public class ViewStandingTableController implements Initializable {
                             new SimpleIntegerProperty(cellData.getValue().getPoints()).asObject());
 
                     standingTable.getItems().addAll(data); // add data to table
-                } catch (Exception ignored) {
+                } catch (Exception e) {
+                    Window owner = backToMenuButton.getScene().getWindow();
+                    MainController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error!",
+                            "An error has occurred.");
                 }
             }
         });

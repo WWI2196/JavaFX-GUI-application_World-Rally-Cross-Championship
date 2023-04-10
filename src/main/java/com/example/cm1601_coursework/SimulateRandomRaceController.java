@@ -71,7 +71,9 @@ public class SimulateRandomRaceController implements Initializable {
                 try {
                     loadRaceDetails(); // call method for loading race details
                     setProgressBar(); // call method to set progress bar
-                } catch (Exception ignored) {
+                } catch (Exception e) {
+                    Window owner = progressBar.getScene().getWindow();
+                    MainController.AlertHelper.showAlert(Alert.AlertType.ERROR,owner,"Error","Error while loading race details");
                 }
             }
         });

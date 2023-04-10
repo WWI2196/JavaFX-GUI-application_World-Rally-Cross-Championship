@@ -71,6 +71,9 @@ public class SaveCurrentDataController {
             try {
                 writeToFile(false); // write data to file in overwrite mode
 
+                successLabel.setTextFill(javafx.scene.paint.Color.GREEN);
+                successLabel.setText("Successfully overwrote data.");
+
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), ae -> {
                     successLabel.setText(null);
                     progressBar.setProgress(0.0);
@@ -107,5 +110,4 @@ public class SaveCurrentDataController {
         }
         writer.close();
     }
-
 }
