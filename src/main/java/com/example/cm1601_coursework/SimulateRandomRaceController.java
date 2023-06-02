@@ -60,12 +60,12 @@ public class SimulateRandomRaceController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> {
             if (dataRepository.size() < 3) { // if there are less than 3 drivers in the dataRepository
-                Alert alert = new Alert(Alert.AlertType.ERROR, "A minimum of three players are required to stimulate a race.", ButtonType.OK); // show error message
+                Alert alert = new Alert(Alert.AlertType.ERROR, "A minimum of three players are required to stimulate a race.", ButtonType.OK); // show the error message
                 alert.setHeaderText(null);
                 alert.initOwner(progressBar.getScene().getWindow());
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.isPresent() && result.get() == ButtonType.OK) { // if ok is pressed
-                    backToMenuButton.fire(); // go back to menu
+                    backToMenuButton.fire(); // go back to the menu
                 }
             } else { // if there are more than 3 drivers in the dataRepository
                 try {
@@ -150,7 +150,7 @@ public class SimulateRandomRaceController implements Initializable {
             raceDateLabel.setText(raceDate);
         } catch (IOException | InterruptedException e) { // catch exceptions
             Window owner = progressBar.getScene().getWindow();
-            MainController.AlertHelper.showAlert(Alert.AlertType.ERROR,owner,"Error","Race details could not be loaded."); // show error message
+            MainController.AlertHelper.showAlert(Alert.AlertType.ERROR,owner,"Error","Race details could not be loaded."); // show an error message
         }
 
     }
@@ -171,7 +171,7 @@ public class SimulateRandomRaceController implements Initializable {
             } while (chosenIndexes.contains(randomIndex)); // if index is already chosen, generate new index
             chosenIndexes.add(randomIndex); // add index to chosenIndexes
             int fourth = temporaryData.get(randomIndex).getPoints(); // get points of driver
-            temporaryData.get(randomIndex).setPoints(fourth + POINTS[mark]); // add points to driver
+            temporaryData.get(randomIndex).setPoints(fourth + POINTS[mark]); // add points to the driver
         }
 
         temporaryData.sort((o1, o2) -> { // sort temporaryData

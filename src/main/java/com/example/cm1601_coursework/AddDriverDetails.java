@@ -11,7 +11,7 @@ public class AddDriverDetails {
                 if (name.toUpperCase().equals(item.getName())) { // check if name already exists
                     throw new Exception(); // if name exists, throw exception
                 } else {
-                    return null; // if name does not exist, return null
+                    return null; // if the name does not exist, return null
                 }
             }
         } catch (Exception e) { // if name exists, catch exception

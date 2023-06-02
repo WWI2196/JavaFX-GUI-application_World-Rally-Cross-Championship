@@ -23,7 +23,7 @@ public class MainController {
     private Scene scene;
 
     @FXML
-    public void switchToAddDriverDetails(ActionEvent event) throws IOException { // switch to add driver details scene
+    public void switchToAddDriverDetails(ActionEvent event) throws IOException { // switch to add the driver details scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddDriverDetails.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -35,7 +35,7 @@ public class MainController {
     }
 
 
-    public void switchToDeleteDriverDetails(ActionEvent event) throws IOException { // switch to delete driver details scene
+    public void switchToDeleteDriverDetails(ActionEvent event) throws IOException { // switch to delete the driver details scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("DeleteDriverDetails.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
