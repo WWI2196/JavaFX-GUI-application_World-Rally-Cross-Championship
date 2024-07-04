@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class AddDriverDetailsController {
-    public static ArrayList<DriverDetails> dataRepository = new ArrayList<>(); // create array list to store driver data
+    public static ArrayList<DriverDetails> dataRepository = new ArrayList<>(); // create an array list to store driver data
 
     @FXML
     private TextField nameTextField;
@@ -52,13 +52,13 @@ public class AddDriverDetailsController {
         try {
             for (DriverDetails item : dataRepository) {
                 if (nameTextField.getText().toUpperCase().equals(item.getName())) {
-                    // check if name already exists
+                    // check if the name already exists
                     throw new Exception(); // if name exists, throw exception
                 } else {
                     nameTextError.setText(null);
                 }
             }
-        } catch (Exception e) { // if name exists, show error message
+        } catch (Exception e) { // if the name exists, show an error message
             nameTextError.setText("Error: Name already exists");
         }
     }
@@ -69,11 +69,11 @@ public class AddDriverDetailsController {
             Integer.parseInt(ageField.getText()); // check if age is an integer number
             ageTextError.setText(null);
             if (Integer.parseInt(ageField.getText()) < 15 && Integer.parseInt(ageField.getText()) > 99) {
-                // check if age is between 15 and 99
+                // check if the age is between 15 and 99
                 throw new NumberFormatException(); // if age is not between 15 and 99, throw exception
             }
         } catch (NumberFormatException e) { //catch exception
-            ageTextError.setText("Error: Enter a valid age"); // if age is not between 15 and 99, show error message
+            ageTextError.setText("Error: Enter a valid age"); // if age is not between 15 and 99, show an error message
         }
     }
 
@@ -82,20 +82,20 @@ public class AddDriverDetailsController {
         try {
             Integer.parseInt(pointsField.getText());// check if points is an integer number
             pointTextError.setText(null);
-        } catch (NumberFormatException e) { // if points is not an integer number, show error message
+        } catch (NumberFormatException e) { // if points is not an integer number, show an error message
             pointTextError.setText("Points must be a integer");
         }
     }
 
     @FXML
     public void initialize() {
-        submitButton.setOnAction(event -> {// when submit button is clicked
+        submitButton.setOnAction(event -> {// when the submitted button is clicked
             try {
-                if (nameTextField.getText().isEmpty()) { // check if name field is empty
-                    throw new IllegalArgumentException("Name cannot be empty."); // if name field is empty, throw exception
+                if (nameTextField.getText().isEmpty()) { // check if the name field is empty
+                    throw new IllegalArgumentException("Name cannot be empty."); // if the name field is empty, throw exception
                 }
 
-                for (DriverDetails item : dataRepository) { // check if name already exists
+                for (DriverDetails item : dataRepository) { // check if the name already exists
                     if (nameTextField.getText().toUpperCase().equals(item.getName())) {
                         throw new IllegalArgumentException("Name already exists.");
                     }
@@ -104,7 +104,7 @@ public class AddDriverDetailsController {
                 try {
                     Integer.parseInt(ageField.getText());
                     if (ageField.getText().isEmpty() || Integer.parseInt(ageField.getText()) < 15
-                            || Integer.parseInt(ageField.getText()) > 99) { // check if age is between 15 and 99
+                            || Integer.parseInt(ageField.getText()) > 99) { // check if the age is between 15 and 99
                         throw new NumberFormatException();
                     }
                 } catch (NumberFormatException e) {
@@ -120,7 +120,7 @@ public class AddDriverDetailsController {
                 String name = nameTextField.getText().toUpperCase(); // get name from text field
                 int age = Integer.parseInt(ageField.getText()); // get age from text field
                 String team = teamTextField.getText(); // get team from text field
-                String carModel = carTextField.getText(); // get car model from text field
+                String carModel = carTextField.getText(); // get a car model from text field
                 int points = Integer.parseInt(pointsField.getText()); // get points from text field
 
                 dataRepository.add(new DriverDetails(name, age, team, carModel, points)); // add driver details to data repository
@@ -136,7 +136,7 @@ public class AddDriverDetailsController {
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event01 -> successText.setText(null)));
                 timeline.play();
 
-            } catch (IllegalArgumentException e) { // if the fields are empty or invalid, show error message
+            } catch (IllegalArgumentException e) { // if the fields are empty or invalid, show an error message
                 Window owner = submitButton.getScene().getWindow(); // get window
                 MainController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error",
                         "Invalid input. "+e.getMessage());
@@ -145,7 +145,7 @@ public class AddDriverDetailsController {
     }
 
     public void switchToMenu(ActionEvent event) throws IOException {
-        MainController.switchToMenu(event); // switch to menu
+        MainController.switchToMenu(event); // switch to a menu
     }
 
     public static class DriverDetails implements java.io.Serializable {

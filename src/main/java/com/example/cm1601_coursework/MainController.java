@@ -167,7 +167,7 @@ public class MainController {
         }
     }
 
-    public void exitProgramme() { // method to exit programme
+    public void exitProgramme() { // method to exit program
         System.exit(0);
     } // exit programme
 }
