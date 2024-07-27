@@ -14,8 +14,8 @@ This JavaFX GUI application manages the World Rally Cross Championship, allowing
 - **JavaFX GUI**: User-friendly interface for interaction.
 - **File Handling**: Data stored in text files, no database usage.
 - **Sorting Algorithm**: Custom algorithm for sorting race data by date.
-- **OOP Principles**: Utilizes classes, objects, and encapsulation. Inheritance, abstraction, and polymorphism are optional[^2^][2].
-
+- **OOP Principles**: Utilizes classes, objects, and encapsulation.
+  
 ## Testing
 - **JUnit Test Suite**: Covers the entire application scenario.
 - **Test Plan**: Detailed test cases with expected and actual outputs.
